@@ -6,8 +6,7 @@ import { Navigation } from '@/data/navigationData';
 import FamuqueUser from "@/assets/logos/famuque-user.svg?react";
 import FamuqueSearch from "@/assets/logos/famuque-search.svg?react";
 import FamuqueCart from "@/assets/logos/famuque-cart.svg?react";
-import { FamuqueButton } from '../FamuqueButton';
-import { nav } from 'framer-motion/client';
+import { FamuqueButton } from '@/components/FamuqueButton';
 
 interface FamuqueNavBarProps {
   showLogin?: boolean;

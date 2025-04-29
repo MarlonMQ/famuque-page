@@ -77,6 +77,9 @@
   --color-gray-light: #D9D9D9;
   --color-gray-dark: #333333;
 
+  --color-success: #16CB9A;
+  --color-error: #D94F4F;
+
   --font-avenir-heavy: 'Avenir Heavy', sans-serif;
   --font-avenir-heavy-oblique: 'Avenir Heavy Oblique', sans-serif;
   --font-avenir-light: 'Avenir Light', sans-serif;

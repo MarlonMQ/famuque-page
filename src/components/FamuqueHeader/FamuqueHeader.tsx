@@ -29,7 +29,7 @@ export const FamuqueHeader: React.FC<BreadcrumbProps> = ({ items }) => {
               {item.href && !isLast ? (
                 <Link
                   to={item.href}
-                  className="hover:underline hover:text-gray transition-colors "
+                  className="hover:underline hover:text-gray-dark transition-colors "
                 >
                   {item.label}
                 </Link>

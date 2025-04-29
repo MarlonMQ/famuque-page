@@ -21,25 +21,25 @@ export function FamuqueFooter() {
             famuque
           </button>
           <div className="w-fit mb-4 text-start ">
-            <h5 className="text-sm mb-2 text-gray">Navigation</h5>
+            <h5 className="text-th-5 mb-2 text-gray">Navigation</h5>
             <ul className="list-none">
               {Navigation.map((navigation, index) => (
                 <li key={index}>
-                  <a className="text-sm hover:underline cursor-pointer" onClick={() => handleClick(navigation.link)}>{navigation.title}</a>
+                  <a className="text-th-5 hover:underline cursor-pointer" onClick={() => handleClick(navigation.link)}>{navigation.title}</a>
                 </li>
               ))}
             </ul>
           </div>
           <div className="w-fit mb-4 text-start">
-            <h5 className="text-sm mb-2 text-gray">Contact</h5>
+            <h5 className="text-th-5 mb-2 text-gray">Contact</h5>
             <ul className="list-none">
-              <li><a className="text-sm cursor-pointer hover:underline " onClick={() => copyToClipBoard('k.emuva@hotmail.com', 'Email')}>Email: k.emuva@hotmail.com</a></li>
+              <li><a className="text-th-5 cursor-pointer hover:underline " onClick={() => copyToClipBoard('k.emuva@hotmail.com', 'Email')}>Email: k.emuva@hotmail.com</a></li>
             </ul>
           </div>
         </div>
         <hr className="border-gray-light my-4 w-full " />
         <div className="my-10">
-          <p className="text-sm ">&copy; {new Date().getFullYear()} Marlon Murillo Quesada. All rights reserved.</p>
+          <p className="text-th-5 ">&copy; {new Date().getFullYear()} Marlon Murillo Quesada. All rights reserved.</p>
         </div>
       </footer>
     </>
