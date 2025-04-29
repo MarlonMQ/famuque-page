@@ -1,0 +1,191 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+
+
+
+/* Avenir - Heavy */
+@font-face {
+  font-family: 'Avenir Heavy';
+  src: url('/fonts/Avenir/Avenir-Heavy.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* Avenir - Heavy Oblique */
+@font-face {
+  font-family: 'Avenir Heavy Oblique'; 
+  src: url('/fonts/Avenir/Avenir-HeavyOblique.woff2') format('woff2');
+  font-weight: 800;
+  font-style: oblique;
+}
+
+/* Avenir - Light */
+@font-face {
+  font-family: 'Avenir Light';
+  src: url('/fonts/Avenir/Avenir-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Avenir - Light Oblique */
+@font-face {
+  font-family: 'Avenir Light Oblique';
+  src: url('/fonts/Avenir/Avenir-LightOblique.woff2') format('woff2');
+  font-weight: 300;
+  font-style: oblique;
+}
+
+/* Avenir - Medium */
+@font-face {
+  font-family: 'Avenir Medium';
+  src: url('/fonts/Avenir/Avenir-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Avenir - Medium Oblique */
+@font-face {
+  font-family: 'Avenir Medium Oblique';
+  src: url('/fonts/Avenir/Avenir-MediumOblique.woff2') format('woff2');
+  font-weight: 500;
+  font-style: oblique;
+}
+
+/* Avenir - Roman */
+@font-face {
+  font-family: 'Avenir Roman';
+  src: url('/fonts/Avenir/Avenir-Roman.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Avenir - Roman Oblique */
+@font-face {
+  font-family: 'Avenir Roman Oblique';
+  src: url('/fonts/Avenir/Avenir-RomanOblique.woff2') format('woff2');
+  font-weight: 400;
+  font-style: oblique;
+}
+
+/* Personaliza el tema de Tailwind directamente aquí */
+@theme {
+  /* Colores personalizados */
+  --color-famuque: #B88E2F;
+  --color-famuque-light: #FFF3E3;
+  --color-gray: #9F9F9F;
+  --color-gray-light: #D9D9D9;
+  --color-gray-dark: #333333;
+
+  --font-avenir-heavy: 'Avenir Heavy', sans-serif;
+  --font-avenir-heavy-oblique: 'Avenir Heavy Oblique', sans-serif;
+  --font-avenir-light: 'Avenir Light', sans-serif;
+  --font-avenir-light-oblique: 'Avenir Light Oblique', sans-serif;
+  --font-avenir-medium: 'Avenir Medium', sans-serif;
+  --font-avenir-medium-oblique: 'Avenir Medium Oblique', sans-serif;
+  --font-avenir-roman: 'Avenir Roman', sans-serif;
+  --font-avenir-roman-oblique: 'Avenir Roman Oblique', sans-serif;
+
+  --text-uggh-max: 192px;
+  --text-uggh-1: 160px;
+  --text-uggh-2: 144px;
+  --text-uggh-3: 128px;
+  --text-uggh-4: 112px;
+  --text-uggh-5: 96px;
+  --text-uggh-6: 72px;
+  --text-uggh-7: 56px;
+
+  /* Gigante Gigante Headers */
+  --text-ggh-max: 128px;
+  --text-ggh-1: 112px;
+  --text-ggh-2: 96px;
+  --text-ggh-3: 80px;
+  --text-ggh-4: 64px;
+  --text-ggh-5: 48px;
+  --text-ggh-6: 36px;
+  --text-ggh-7: 28px;
+
+  /* Gigante Headers */
+  --text-gh-max: 96px;
+  --text-gh-1: 72px;
+  --text-gh-2: 60px;
+  --text-gh-3: 48px;
+  --text-gh-4: 40px;
+  --text-gh-5: 36px;
+  --text-gh-6: 30px;
+  --text-gh-7: 24px;
+
+  /* Display Headers */
+  --text-dh-max: 70px;
+  --text-dh-1: 48px;
+  --text-dh-2: 36px;
+  --text-dh-3: 24px;
+  --text-dh-4: 20px;
+  --text-dh-5: 20px;
+  --text-dh-6: 16px;
+  --text-dh-7: 14px;
+
+  /* Title Headers */
+  --text-th-max: 60px;
+  --text-th-1: 40px;
+  --text-th-2: 30px;
+  --text-th-3: 20px;
+  --text-th-4: 18px;
+  --text-th-5: 18px;
+  --text-th-6: 14px;
+  --text-th-7: 12px;
+
+  /* Medium Headers */
+  --text-mh-max: 50px;
+  --text-mh-1: 32px;
+  --text-mh-2: 24px;
+  --text-mh-3: 18px;
+  --text-mh-4: 16px;
+  --text-mh-5: 16px;
+  --text-mh-6: 14px;
+  --text-mh-7: 12px;
+
+  --spacing-std-1: 5px;
+  --spacing-std-1-tablet: 5px;
+  --spacing-std-1-desktop: 5px;
+
+  --spacing-std-2: 10px;
+  --spacing-std-2-tablet: 10px;
+  --spacing-std-2-desktop: 10px;
+
+  --spacing-std-3: 20px;
+  --spacing-std-3-tablet: 30px;
+  --spacing-std-3-desktop: 30px;
+
+  --spacing-comp-1: 30px;
+  --spacing-comp-1-tablet: 40px;
+  --spacing-comp-1-desktop: 50px;
+
+  --spacing-comp-2: 50px;
+  --spacing-comp-2-tablet: 75px;
+  --spacing-comp-2-desktop: 100px;
+
+  --spacing-comp-3: 100px;
+  --spacing-comp-3-tablet: 150px;
+  --spacing-comp-3-desktop: 150px;
+
+
+  --breakpoint-minimal: 360px;
+  --breakpoint-mobile: 375px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-medium: 920px;
+  --breakpoint-laptop: 1024px;
+  --breakpoint-desktop: 1366px;
+  --breakpoint-wide: 1640px;
+  --breakpoint-maximum: 1920px;
+
+  --spacing-strap-mobile: 250px;
+  --spacing-strap: 350px;
+  --spacing-minimal: 500px;
+  --spacing-short: 700px;
+  --spacing-medium: 768px;
+  --spacing-tall: 900px;
+  --spacing-extra-tall: 1080px;
+  --spacing-ultra-tall: 1440px;
+  --spacing-maximum: 2160px;
+}

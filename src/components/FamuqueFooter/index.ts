@@ -1,0 +1,1 @@
+export {FamuqueFooter} from './FamuqueFooter'
