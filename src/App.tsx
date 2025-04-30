@@ -3,6 +3,7 @@ import ContactPage from '@/pages/ContactPage';
 import CatalogPage from '@/pages/CatalogPage';
 import AboutPage from '@/pages/AboutPage';
 import ComingSoonPage from '@/pages/ComingSoongPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/contact" element={<ContactPage/>} />
         <Route path="/catalog" element={<CatalogPage/>} />
         <Route path="/about" element={<AboutPage/>} />
+        <Route path="*" element={<NotFoundPage/>} />
       </Routes>
       <ToastContainer
         position="bottom-right"

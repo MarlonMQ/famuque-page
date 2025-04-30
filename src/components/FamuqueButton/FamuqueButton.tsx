@@ -56,9 +56,10 @@ export function FamuqueButton({
       (loading || disabled) && `opacity-50`,
     ],
     hyperlinks: [
-      "underline text-famuque hover:brightness-50 transition-all duration-300 ease-in-out",
-      loading && "text-famuque opacity-50 no-underline",
-      disabled && "text-famuque opacity-50 no-underline",
+      "underline text-black hover:brightness-50 transition-all duration-300 ease-in-out",
+      "hover:text-famuque",
+      loading && "text-black opacity-50 no-underline",
+      disabled && "text-black opacity-50 no-underline",
     ],
   };
   const selectedStyles = variantStyles[variant] || [];
