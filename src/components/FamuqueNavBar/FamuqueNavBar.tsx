@@ -24,8 +24,9 @@ export function FamuqueNavBar({ showLogin = true, showSearch = true, showCart = 
       <nav className="w-full max-w-screen-desktop flex flex-row justify-between m-std-3 px-std-1-desktop">
         <FamuqueButton
           variant='secondary'
+          className='z-20'
           labelClassName='text-4xl font-avenir-heavy'
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/dev')}
         >
           famuque
         </FamuqueButton>
@@ -50,7 +51,7 @@ export function FamuqueNavBar({ showLogin = true, showSearch = true, showCart = 
                   {Navigation.map((item) => (
                     <FamuqueButton
                       key={item.title}
-                      onClick={() => window.open(item.link, '_blank')}
+                      onClick={() => navigate(item.link)}
                       variant='secondary'
                     >
                       {item.title}
@@ -62,7 +63,7 @@ export function FamuqueNavBar({ showLogin = true, showSearch = true, showCart = 
             )}
           </AnimatePresence>
         </div>
-        <div className="hidden tablet:flex gap-comp-2-desktop">
+        <div className="hidden tablet:flex gap-comp-2 laptop:gap-comp-2-desktop">
           {Navigation.map((item) => (
             <FamuqueButton
               key={item.title}

@@ -13,15 +13,15 @@ export function FamuqueFooter() {
     <>  
       <hr className="border-t border-gray-light w-full z-10" />
       <footer className=" text-black bg-white py-comp-2 desktop:py-comp-2-tablet px-std-3-desktop laptop:px-comp-3-desktop overflow-hidden w-full z-10 flex flex-col font-avenir-roman">
-        <div className="flex sm:flex-row flex-col justify-between laptop:items-start gap-5 w-full">
+        <div className="flex sm:flex-row flex-col justify-between items-start gap-5 w-full">
           <button
             className="z-20 text-dh-2 font-avenir-heavy text-black cursor-pointer"
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/dev')}
           >
             famuque
           </button>
           <div className="w-fit mb-4 text-start ">
-            <h5 className="text-th-5 mb-2 text-gray">Navigation</h5>
+            <h5 className="text-th-5 mb-2 text-gray">Navegación</h5>
             <ul className="list-none">
               {Navigation.map((navigation, index) => (
                 <li key={index}>
@@ -31,7 +31,7 @@ export function FamuqueFooter() {
             </ul>
           </div>
           <div className="w-fit mb-4 text-start">
-            <h5 className="text-th-5 mb-2 text-gray">Contact</h5>
+            <h5 className="text-th-5 mb-2 text-gray">Contacto</h5>
             <ul className="list-none">
               <li><a className="text-th-5 cursor-pointer hover:underline " onClick={() => copyToClipBoard('k.emuva@hotmail.com', 'Email')}>Email: k.emuva@hotmail.com</a></li>
             </ul>

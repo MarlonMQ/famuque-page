@@ -41,7 +41,7 @@ export function FamuqueButton({
   const variantStyles: Record<Variant, (string | false | undefined)[]> = {
     primary: [
       `bg-famuque py-5 px-7 font-avenir-medium text-2xl text-white`,
-      "hover:bg-white hover:text-famuque",
+      "hover:bg-transparent hover:text-famuque hover:outline-famuque hover:outline-2",
       (loading || disabled) && `opacity-50`,
 
     ],
@@ -51,7 +51,7 @@ export function FamuqueButton({
       (loading || disabled) && `opacity-50`,
     ],
     tertiary: [
-      "bg-white text-famuque py-5 px-7 font-avenir-medium text-2xl",
+      "bg-white text-famuque py-5 px-7 font-avenir-medium text-2xl outline-famuque outline-2",
       "hover:bg-famuque hover:text-white",
       (loading || disabled) && `opacity-50`,
     ],

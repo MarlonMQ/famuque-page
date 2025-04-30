@@ -1,0 +1,1 @@
+export {FamuqueProductCard} from './FamuqueProductCard';

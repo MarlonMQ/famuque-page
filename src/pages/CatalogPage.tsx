@@ -9,7 +9,7 @@ function CatalogPage() {
     <DefaultLayout>
       <FamuqueNavBar/>
       <FamuqueHeader items={[
-        { label: "Inicio", href: "/" },
+        { label: "Inicio", href: "/dev" },
         { label: "Catálogo" }
       ]}/>
       <section className="bg-white flex relative w-full h-screen items-center justify-center">

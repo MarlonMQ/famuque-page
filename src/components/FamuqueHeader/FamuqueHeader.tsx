@@ -14,13 +14,13 @@ interface BreadcrumbProps {
 
 export const FamuqueHeader: React.FC<BreadcrumbProps> = ({ items }) => {
   return (
-    <nav className="flex flex-col items-center gap-std-3 justify-center w-full h-strap-mobile tablet:h-strap ">
-      <img src={FamuqueBackground} alt="Famuque" className="absolute w-full h-screen object-cover -z-10 opacity-80 " />
+    <nav className="relative flex flex-col items-center gap-std-3 justify-center w-full  h-strap-mobile tablet:h-strap overflow-hidden">
+      <img src={FamuqueBackground} alt="Famuque" className="absolute w-full h-full  object-cover opacity-80 " />
 
-      <label className="text-ggh-5 font-avenir-medium text">
+      <label className="text-ggh-5 font-avenir-medium text z-10">
         {items[items.length - 1].label}
       </label>
-      <div className="flex items-center justify-center space-x-2 ">
+      <div className="flex items-center justify-center space-x-2 z-10">
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
           return (

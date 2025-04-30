@@ -18,7 +18,7 @@ export function DefaultLayout({ children, className }: DefaultLayoutProps) {
     <main
       data-component="DefaultLayout"
       className={cn(
-        "flex flex-col items-center justify-start w-full mx-auto",
+        "flex flex-col items-center justify-start w-full mx-auto bg-white",
         "flex-1 overflow-y-auto overflow-x-clip no-scroll",
         className,
       )}
