@@ -7,7 +7,8 @@ type Variant =
   | "secondary"
   | "tertiary"
   | "hyperlinks"
-  | "little";
+  | "little"
+  | "outline";
 
 interface FamuqueButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
@@ -69,6 +70,13 @@ export function FamuqueButton({
       (loading || disabled) && `opacity-50`,
 
     ],
+    outline: [
+      `outline-black outline-2 rounded-xl py-5 px-7 font-avenir-medium text-2xl text-black`,
+      "hover:bg-transparent hover:text-gray hover:outline-gray ",
+      (loading || disabled) && `opacity-50`,
+
+    ],
+      
   };
   const selectedStyles = variantStyles[variant] || [];
   const finalClassName = cn(

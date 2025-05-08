@@ -12,9 +12,11 @@
     "watch:tailwind": "postcss ./assets/css/tailwind.scss -o public_html/assets/css/tailwindoutput.css --watch"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.2.2",
     "@tailwindcss/vite": "^4.1.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.9.1",
     "hamburger-react": "^2.5.2",
     "lucide-react": "^0.503.0",
