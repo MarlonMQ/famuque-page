@@ -1,5 +1,6 @@
 import React from "react";
 import { Heart, Share2, Shuffle } from "lucide-react";
+import { FamuqueButton } from "../FamuqueButton";
 
 interface ProductCardProps {
   name: string;
@@ -20,50 +21,46 @@ export const FamuqueProductCard: React.FC<ProductCardProps> = ({
 }) => {
   return (
     <div className="relative group w-full  bg-white overflow-hidden ">
-      {/* Product Image */}
       <img
         src={image}
         alt={name}
         className="w-full h-strap object-cover transition-transform duration-300 group-hover:scale-105"
       />
 
-      {/* Discount badge */}
       {discount && (
         <div className="absolute top-4 right-4 bg-[var(--color-error)] text-white text-sm font-semibold px-3 py-1 rounded-full">
           {discount}
         </div>
       )}
 
-      {/* Hover Layer */}
-      <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <button className="bg-white text-[var(--color-famuque)] px-6 py-2 font-medium rounded-sm mb-4">
+      <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 gap-std-2">
+        <FamuqueButton variant="little">
           Add to cart
-        </button>
+        </FamuqueButton>
         <div className="flex gap-4 text-white text-sm">
-          <div className="flex items-center gap-1">
-            <Share2 size={16} /> <span>Share</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <Shuffle size={16} /> <span>Compare</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <Heart size={16} /> <span>Like</span>
-          </div>
+          <FamuqueButton
+            variant="secondary"
+            prepend_icon={<Share2/>}
+            className="text-white "
+            labelClassName="text-th-5"
+          >
+            Share
+          </FamuqueButton>
         </div>
       </div>
 
-      {/* Product Info */}
+      
       <div className="p-4 bg-gray-lightest">
-        <h3 className="text-[var(--color-gray-dark)] font-semibold text-lg">
+        <h3 className="text-gray-dark font-avenir-medium text-th-5">
           {name}
         </h3>
-        <p className="text-[var(--color-gray)] text-sm">{description}</p>
+        <p className="text-gray font-avenir-light text-th-6">{description}</p>
         <div className="flex items-center gap-2 mt-1">
-          <span className="text-[var(--color-gray-dark)] font-semibold">
+          <span className="text-gray-dark font-avenir-roman">
             {price}
           </span>
           {oldPrice && (
-            <span className="text-[var(--color-gray)] line-through text-sm">
+            <span className="text-gray line-through font-avenir-roman">
               {oldPrice}
             </span>
           )}

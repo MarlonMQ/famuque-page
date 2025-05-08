@@ -17,7 +17,6 @@ function NotFoundPage() {
           Volver al inicio
         </FamuqueButton>
       </section>
-      
     </DefaultLayout>
   )
 }

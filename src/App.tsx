@@ -12,7 +12,7 @@ import { ToastContainer, Bounce } from 'react-toastify';
 
 export default function App() {
   return (
-    <Router>
+    <Router>  
       <Routes>
         <Route path="/" element={<ComingSoonPage/>} />
         <Route path="/dev" element={<HomePage/>} />
