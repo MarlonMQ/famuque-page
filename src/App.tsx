@@ -27,8 +27,10 @@ export default function App() {
             name="Aspersor Plastico 1/2" 
             description="ASPERSOR PLST. 1/2  R/M, 10-13 MTS 1.150 A 1.190 L/H PRESION DE 1.5 A 3.5 BAR"
             price="CRC 2.500"
+            distributorPrice="CRC 2.000"
             image={tempImage}
             slug="aspersor-plastico-1-2"
+            onlyCatalog
           />
           } 
         />
