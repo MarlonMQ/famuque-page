@@ -5,7 +5,6 @@ import { FamuqueFooter } from "@/components/FamuqueFooter"
 import { FamuqueHeader } from "@/components/FamuqueHeader"
 import { Carousel, CarouselContent, CarouselItem, } from "@/components/ui/carousel"
 import { FamuqueButton } from "@/components/FamuqueButton"
-import { on } from "events"
 
 
 interface ProductProps {

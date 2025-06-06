@@ -1,5 +1,5 @@
 import React from "react";
-import { Heart, Share2, Shuffle } from "lucide-react";
+import { Share2 } from "lucide-react";
 import { FamuqueButton } from "../FamuqueButton";
 
 interface ProductCardProps {
