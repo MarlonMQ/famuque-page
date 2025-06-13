@@ -48,7 +48,7 @@ function CatalogPage() {
             {productos.map((producto) => (
               <FamuqueProductCard
                 key={producto.id}
-                id={producto.id}
+                slug={producto.slug}
                 name={producto.name}
                 description={producto.description}
                 price={producto.price}

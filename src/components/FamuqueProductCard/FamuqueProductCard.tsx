@@ -4,7 +4,7 @@ import { FamuqueButton } from "../FamuqueButton";
 import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
-  id: number;
+  slug: string;
   name: string;
   description?: string;
   price?: string;
@@ -16,7 +16,7 @@ interface ProductCardProps {
 }
 
 export const FamuqueProductCard: React.FC<ProductCardProps> = ({
-  id,
+  slug,
   name,
   description,
   price,
@@ -31,7 +31,7 @@ export const FamuqueProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <div 
-      onClick={() => navigate(`/product/${id}`)}
+      onClick={() => navigate(`/product/${slug}`)}
       className="relative group w-full  bg-white overflow-hidden cursor-pointer">
       <img
         src={image}

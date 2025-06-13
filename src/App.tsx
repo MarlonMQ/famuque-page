@@ -21,7 +21,7 @@ export default function App() {
         <Route path="/contact" element={<ContactPage/>} />
         <Route path="/catalog" element={<CatalogPage/>} />
         <Route path="/about" element={<AboutPage/>} />
-        <Route path="/product/:id" element={<ProductPage />} />
+        <Route path="/product/:slug" element={<ProductPage />} />
         <Route path="*" element={<NotFoundPage/>} />
       </Routes>
       <ToastContainer

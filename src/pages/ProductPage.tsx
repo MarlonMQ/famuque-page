@@ -10,7 +10,6 @@ import NotFoundPage from "./NotFoundPage";
 import { FamuqueMetadata } from "@/components/FamuqueMetaData";
 
 interface ProductProps {
-  id: string;
   name: string;
   description: string;
   price: string;
@@ -28,21 +27,21 @@ interface ProductProps {
 
 
 export const ProductPage = () => {
-  const { id } = useParams(); // id viene de /product/:id
+  const { slug } = useParams(); // id viene de /product/:id
   const [product, setProduct] = useState<ProductProps | null>(null);
   const [loading, setLoading] = useState(true);
   // const [quantity, setQuantity] = useState(1);
 
 
   useEffect(() => {
-    if (!id) return;
+    if (!slug) return;
 
     async function fetchProduct() {
       setLoading(true);
       const { data, error } = await supabase
         .from("product")
         .select("*")
-        .eq("id", id)
+        .eq("slug", slug)
         .single();
 
       if (error) {
@@ -55,7 +54,7 @@ export const ProductPage = () => {
     }
 
     fetchProduct();
-  }, [id]);
+  }, [slug]);
 
   
   if (loading) return null; // o un spinner
@@ -67,7 +66,7 @@ export const ProductPage = () => {
   return (
     <>
       <FamuqueMetadata
-        title={product.name}
+        title={`${product.name} | Famuque`}
         description={product.description}
         canonicalLink={`https://famuque.com/product/${product.slug}`}
       />
