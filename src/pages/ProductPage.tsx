@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"; // para obtener params URL
 import { supabase } from "@/lib/supabaseClient"; // importa tu cliente supabase
@@ -8,7 +7,6 @@ import { FamuqueFooter } from "@/components/FamuqueFooter";
 import { FamuqueHeader } from "@/components/FamuqueHeader";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import NotFoundPage from "./NotFoundPage";
-import { useNavigate } from "react-router-dom";
 
 interface ProductProps {
   id: string;
@@ -34,7 +32,6 @@ export const ProductPage = () => {
   const [loading, setLoading] = useState(true);
   // const [quantity, setQuantity] = useState(1);
 
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (!id) return;

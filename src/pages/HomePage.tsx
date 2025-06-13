@@ -4,8 +4,6 @@ import FamuqueBackground from "@/assets/background/famuque-background--1.jpg"
 import { useNavigate } from "react-router-dom"
 import { FamuqueFooter } from "@/components/FamuqueFooter"
 import { FamuqueButton } from "@/components/FamuqueButton"
-import { FamuqueProductCard } from "@/components/FamuqueProductCard"
-import tempImage from "@/assets/temp/aspersor.jpg"
 
 function HomePage() {
   const navigate = useNavigate()
@@ -32,56 +30,6 @@ function HomePage() {
         <section className="bg-white flex flex-col relative w-full items-center justify-center py-comp-2">
           <label className="text-gh-3 font-avenir-heavy">Nuestros Productos</label>
           <div className="grid grid-cols-1 mobile:grid-cols-2 tablet:grid-cols-3 laptop:grid-cols-4 gap-std-3 p-comp-1 tablet:p-comp-1-desktop w-full max-w-screen-desktop">
-            <FamuqueProductCard
-              id={1}
-              name="Aspersor Plastico 1/2"
-              description="ASPERSOR PLST. 1/2  R/M, 10-13 MTS 1.150 A 1.190 L/H PRESION DE 1.5 A 3.5 BAR"
-              price="CRC 2.500"
-              oldPrice="CRC 3.000"
-              image={tempImage}
-            />
-            <FamuqueProductCard
-              name="Aspersor Plastico 1/2"
-              description="ASPERSOR PLST. 1/2  R/M, 10-13 MTS 1.150 A 1.190 L/H PRESION DE 1.5 A 3.5 BAR"
-              price="CRC 2.500"
-              image={tempImage}
-            />
-            <FamuqueProductCard
-              name="Aspersor Plastico 1/2"
-              description="ASPERSOR PLST. 1/2  R/M, 10-13 MTS 1.150 A 1.190 L/H PRESION DE 1.5 A 3.5 BAR"
-              price="CRC 2.500"
-              image={tempImage}
-            />
-            <FamuqueProductCard
-              name="Aspersor Plastico 1/2"
-              description="ASPERSOR PLST. 1/2  R/M, 10-13 MTS 1.150 A 1.190 L/H PRESION DE 1.5 A 3.5 BAR"
-              price="CRC 2.500"
-              image={tempImage}
-            />
-            <FamuqueProductCard
-              name="Aspersor Plastico 1/2"
-              description="ASPERSOR PLST. 1/2  R/M, 10-13 MTS 1.150 A 1.190 L/H PRESION DE 1.5 A 3.5 BAR"
-              price="CRC 2.500"
-              image={tempImage}
-            />
-            <FamuqueProductCard
-              name="Aspersor Plastico 1/2"
-              description="ASPERSOR PLST. 1/2  R/M, 10-13 MTS 1.150 A 1.190 L/H PRESION DE 1.5 A 3.5 BAR"
-              price="CRC 2.500"
-              image={tempImage}
-            />
-            <FamuqueProductCard
-              name="Aspersor Plastico 1/2"
-              description="ASPERSOR PLST. 1/2  R/M, 10-13 MTS 1.150 A 1.190 L/H PRESION DE 1.5 A 3.5 BAR"
-              price="CRC 2.500"
-              image={tempImage}
-            />
-            <FamuqueProductCard
-              name="Aspersor Plastico 1/2"
-              description="ASPERSOR PLST. 1/2  R/M, 10-13 MTS 1.150 A 1.190 L/H PRESION DE 1.5 A 3.5 BAR"
-              price="CRC 2.500"
-              image={tempImage}
-            />
           </div>
           <FamuqueButton 
             onClick={() => navigate('/catalog')}
