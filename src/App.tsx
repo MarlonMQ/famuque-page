@@ -4,8 +4,7 @@ import CatalogPage from '@/pages/CatalogPage';
 import AboutPage from '@/pages/AboutPage';
 import ComingSoonPage from '@/pages/ComingSoongPage';
 import NotFoundPage from './pages/NotFoundPage';
-import ProductPage from './pages/ProductoPage';
-import tempImage from "@/assets/temp/aspersor.jpg"
+import ProductPage from './pages/ProductPage';
 
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -22,18 +21,7 @@ export default function App() {
         <Route path="/contact" element={<ContactPage/>} />
         <Route path="/catalog" element={<CatalogPage/>} />
         <Route path="/about" element={<AboutPage/>} />
-        <Route path="/product" element={
-          <ProductPage 
-            name="Aspersor Plastico 1/2" 
-            description="ASPERSOR PLST. 1/2  R/M, 10-13 MTS 1.150 A 1.190 L/H PRESION DE 1.5 A 3.5 BAR"
-            price="CRC 2.500"
-            distributorPrice="CRC 2.000"
-            image={tempImage}
-            slug="aspersor-plastico-1-2"
-            onlyCatalog
-          />
-          } 
-        />
+        <Route path="/product/:id" element={<ProductPage />} />
         <Route path="*" element={<NotFoundPage/>} />
       </Routes>
       <ToastContainer

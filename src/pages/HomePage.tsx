@@ -33,6 +33,7 @@ function HomePage() {
           <label className="text-gh-3 font-avenir-heavy">Nuestros Productos</label>
           <div className="grid grid-cols-1 mobile:grid-cols-2 tablet:grid-cols-3 laptop:grid-cols-4 gap-std-3 p-comp-1 tablet:p-comp-1-desktop w-full max-w-screen-desktop">
             <FamuqueProductCard
+              id={1}
               name="Aspersor Plastico 1/2"
               description="ASPERSOR PLST. 1/2  R/M, 10-13 MTS 1.150 A 1.190 L/H PRESION DE 1.5 A 3.5 BAR"
               price="CRC 2.500"

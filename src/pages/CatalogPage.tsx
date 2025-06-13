@@ -4,6 +4,7 @@ import { FamuqueNavBar } from "@/components/FamuqueNavBar"
 import { DefaultLayout } from "@/components/Layout/DefaultLayout"
 import { FamuqueFooter } from "@/components/FamuqueFooter"
 import { FamuqueHeader } from "@/components/FamuqueHeader"
+import { FamuqueProductCard } from "@/components/FamuqueProductCard/FamuqueProductCard"
 
 function CatalogPage() {
   const [productos, setProductos] = useState<any[]>([])
@@ -43,25 +44,22 @@ function CatalogPage() {
           ]}
         />
         <section className="bg-white flex flex-col gap-4 w-full min-h-screen items-center justify-start p-8">
-          <h2 className="text-2xl font-semibold">Productos:</h2>
-          {productos.length === 0 && <p>Cargando productos...</p>}
-          <ul className="w-full max-w-4xl grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 mobile:grid-cols-2 tablet:grid-cols-3 laptop:grid-cols-4 gap-std-3 p-comp-1 tablet:p-comp-1-desktop w-full max-w-screen-desktop">
             {productos.map((producto) => (
-              <li
+              <FamuqueProductCard
                 key={producto.id}
-                className="border p-4 rounded shadow-sm"
-              >
-                <p className="font-bold">{producto.nombre}</p>
-                <p>₡{producto.precio}</p>
-                <img
-                  src={producto.image}
-                  alt={producto.name}
-                  className="w-full h-48 object-cover mt-2"
-                />
-              </li>
-              
+                id={producto.id}
+                name={producto.name}
+                description={producto.description}
+                price={producto.price}
+                oldPrice={producto.old_price}
+                discount={producto.discount}
+                image={producto.image}
+                showAddToCart={true}
+                showShare={true}
+              />
             ))}
-          </ul>
+          </div>
         </section>
         <FamuqueFooter />
       </DefaultLayout>
