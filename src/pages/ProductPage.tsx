@@ -7,6 +7,7 @@ import { FamuqueFooter } from "@/components/FamuqueFooter";
 import { FamuqueHeader } from "@/components/FamuqueHeader";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import NotFoundPage from "./NotFoundPage";
+import { FamuqueMetadata } from "@/components/FamuqueMetaData";
 
 interface ProductProps {
   id: string;
@@ -65,9 +66,11 @@ export const ProductPage = () => {
 
   return (
     <>
-      <title>{product.name} | Famuque</title>
-      <meta name="description" content={`Compra ${product.name} al mejor precio. ${product.description}`} />
-      <link rel="canonical" href={`https://famuque.com/product/${product.slug}`} />
+      <FamuqueMetadata
+        title={product.name}
+        description={product.description}
+        canonicalLink={`https://famuque.com/product/${product.slug}`}
+      />
 
       <DefaultLayout>
         <FamuqueNavBar />

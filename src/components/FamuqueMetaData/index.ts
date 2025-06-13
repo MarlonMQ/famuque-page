@@ -1,0 +1,1 @@
+export { FamuqueMetadata } from "./FamuqueMetaData";
