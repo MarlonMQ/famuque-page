@@ -9,7 +9,7 @@ function AboutPage() {
     <>
       <title>Sobre Nososotros | Famuque</title>
       <meta name="description" content="Conoce más sobre nosotros y nuestra misión en Famuque. Nos dedicamos a ofrecer productos para irrigación de calidad." />
-      <link rel="canonical" href="https://famuque.com/about" />
+      <link rel="canonical" href="https://famuque.com/about_us" />
       <DefaultLayout>
         <FamuqueNavBar/>
         <FamuqueHeader items={[
