@@ -5,27 +5,38 @@ import { DefaultLayout } from "@/components/Layout/DefaultLayout"
 import { FamuqueFooter } from "@/components/FamuqueFooter"
 import { FamuqueHeader } from "@/components/FamuqueHeader"
 import { FamuqueProductCard } from "@/components/FamuqueProductCard/FamuqueProductCard"
+import { FamuquePagination } from "@/components/FamuquePagination"
 
 function CatalogPage() {
   const [productos, setProductos] = useState<any[]>([])
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(1)
+  const ITEMS_PER_PAGE = 1
+  const search = "" // podrías usar un estado en el futuro
 
   useEffect(() => {
     async function fetchProductos() {
-      const { data, error } = await supabase
-        .from("product")
-        .select("*")
-        .limit(10)
+      const from = (currentPage - 1) * ITEMS_PER_PAGE
+      const to = from + ITEMS_PER_PAGE - 1
 
-      if (error) console.error("Error al obtener productos:", error)
-      else {
-        console.log("Productos obtenidos:", data)
-        // Aquí puedes procesar los datos si es necesario
-        setProductos(data)
-      } 
+      const { data, error, count } = await supabase
+        .from("product")
+        .select("*", { count: "exact" }) // importante para obtener total
+        .range(from, to)
+
+      if (error) {
+        console.error("Error al obtener productos:", error)
+        return
+      }
+
+      const totalPages = Math.ceil((count ?? 0) / ITEMS_PER_PAGE)
+
+      setProductos(data || [])
+      setTotalPages(totalPages)
     }
 
     fetchProductos()
-  }, [])
+  }, [currentPage])
 
   return (
     <>
@@ -61,6 +72,14 @@ function CatalogPage() {
             ))}
           </div>
         </section>
+        <div className="flex justify-center w-full p-4 z-20">
+          <FamuquePagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+            className="w-full max-w-screen-desktop"
+          />
+        </div>
         <FamuqueFooter />
       </DefaultLayout>
     </>

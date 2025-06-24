@@ -1,0 +1,1 @@
+export {FamuquePagination} from "./FamuquePagination.tsx";
