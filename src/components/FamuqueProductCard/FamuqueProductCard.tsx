@@ -32,11 +32,11 @@ export const FamuqueProductCard: React.FC<ProductCardProps> = ({
   return (
     <div 
       onClick={() => navigate(`/product/${slug}`)}
-      className="relative group w-full  bg-white overflow-hidden cursor-pointer">
+      className="relative group w-full bg-white overflow-hidden cursor-pointer max-w-strap hover:scale-110 stransition-all duration-300">
       <img
         src={image}
         alt={name}
-        className="w-full h-strap object-cover transition-transform duration-300 group-hover:scale-105"
+        className="w-full h-strap object-cover transition-transform duration-300"
       />
 
       {discount && (
@@ -45,7 +45,7 @@ export const FamuqueProductCard: React.FC<ProductCardProps> = ({
         </div>
       )}
 
-      <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 gap-std-2">
+      <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center opacity-0 transition-opacity duration-300 gap-std-2">
         {showAddToCart && (
           <FamuqueButton 
             variant="little"
@@ -73,10 +73,10 @@ export const FamuqueProductCard: React.FC<ProductCardProps> = ({
       </div>
       
       <div className="p-4 bg-gray-lightest">
-        <h3 className="text-gray-dark font-avenir-medium text-th-5">
+        <h3 className="text-gray-dark font-avenir-medium text-th-5 truncate">
           {name}
         </h3>
-        <p className="text-gray font-avenir-light text-th-6">{description}</p>
+        <p className="text-gray font-avenir-light text-th-6 truncate">{description}</p>
         <div className="flex items-center gap-2 mt-1">
           {price && (
             <span className="text-gray-dark font-avenir-roman">

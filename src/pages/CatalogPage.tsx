@@ -6,6 +6,7 @@ import { FamuqueFooter } from "@/components/FamuqueFooter"
 import { FamuqueHeader } from "@/components/FamuqueHeader"
 import { FamuqueProductCard } from "@/components/FamuqueProductCard/FamuqueProductCard"
 import { FamuquePagination } from "@/components/FamuquePagination"
+import { Loader2 } from "lucide-react";
 
 const ITEMS_PER_PAGE = 1
 
@@ -13,10 +14,13 @@ function CatalogPage() {
   const [productos, setProductos] = useState<any[]>([])
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
+  const [loading, setLoading] = useState(true)
   // const search = ""
 
   useEffect(() => {
     async function fetchProductos() {
+      
+      setLoading(true)
       const from = (currentPage - 1) * ITEMS_PER_PAGE
       const to = from + ITEMS_PER_PAGE - 1
 
@@ -34,8 +38,8 @@ function CatalogPage() {
 
       setProductos(data || [])
       setTotalPages(totalPages)
+      setLoading(false)
     }
-
     fetchProductos()
   }, [currentPage])
 
@@ -48,17 +52,24 @@ function CatalogPage() {
       />
       <link rel="canonical" href="https://famuque.com/catalog" />
       <DefaultLayout>
-        <FamuqueNavBar />
+        <FamuqueNavBar showCart={false} showLogin={false} showSearch={false} />
         <FamuqueHeader
           items={[
             { label: "Inicio", href: "/dev" },
             { label: "Catálogo" },
           ]}
         />
-        <section className="bg-white flex flex-col gap-4 w-full min-h-screen items-center justify-start p-8">
-          <div className="grid grid-cols-1 mobile:grid-cols-2 tablet:grid-cols-3 laptop:grid-cols-4 gap-std-3 p-comp-1 tablet:p-comp-1-desktop w-full max-w-screen-desktop">
-            {productos.map((producto) => (
-              <FamuqueProductCard
+        {loading ? (
+          <div className="flex flex-col gap-2 items-center justify-center w-full h-strap">
+            <label className="font-avenir-light text-th-1 text-gray-500">Cargando productos...</label>
+            <Loader2 className=" animate-spin size-comp-3 text-gray-500" />
+          </div>
+        ) : (
+          <>
+          <section className="bg-white flex flex-col gap-4 w-full items-center justify-start p-8">
+            <div className="grid grid-cols-1 mobile:grid-cols-1 tablet:grid-cols-3 laptop:grid-cols-4 gap-std-3 p-comp-1 tablet:p-comp-1-desktop w-full max-w-screen-desktop">
+              {productos.map((producto) => (
+                <FamuqueProductCard
                 key={producto.id}
                 slug={producto.slug}
                 name={producto.name}
@@ -67,24 +78,29 @@ function CatalogPage() {
                 oldPrice={producto.old_price}
                 discount={producto.discount}
                 image={producto.image}
-                showAddToCart={true}
-                showShare={true}
-              />
-            ))}
-          </div>
-        </section>
-        <div className="flex justify-center w-full p-4 z-20">
+                showAddToCart={false}
+                showShare={false}
+                />
+              ))}
+            </div>
+          </section>
+        
+        {totalPages > 1 && (
+          <div className="flex justify-center w-full p-4 z-20">
           <FamuquePagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={setCurrentPage}
-            className="w-full max-w-screen-desktop"
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+          className="w-full max-w-screen-desktop"
           />
-        </div>
+          </div>
+        )}
+        </>
+        )}
         <FamuqueFooter />
-      </DefaultLayout>
-    </>
-  )
+        </DefaultLayout>
+        </>
+      )
 }
 
 export default CatalogPage

@@ -30,9 +30,9 @@ export function FamuquePagination({
 
   return (
     <div className={className}>
-      <Pagination>
+      <Pagination className="gap-2">
         <PaginationPrevious
-          className={`hover:text-gray cursor-pointer ${currentPage === 1 ? "opacity-50 pointer-events-none" : ""}`}
+          className={`bg-famuque-light hover:bg-famuque cursor-pointer ${currentPage === 1 ? "bg-white opacity-50 pointer-events-none" : ""}`}
           isActive={currentPage > 1}
           onClick={() => handlePageChange(currentPage - 1)}
         />
@@ -40,7 +40,7 @@ export function FamuquePagination({
         <PaginationContent>
           {currentPage > 2 && (
             <>
-              <PaginationItem className="cursor-pointer hover:bg-gray-light rounded-md transtion-all duration-150">
+              <PaginationItem className="bg-famuque-light cursor-pointer hover:bg-famuque rounded-md transtion-all duration-150">
                 <PaginationLink onClick={() => handlePageChange(1)}>1</PaginationLink>
               </PaginationItem>
               {currentPage > 3 && <PaginationEllipsis />}
@@ -48,21 +48,21 @@ export function FamuquePagination({
           )}
 
           {currentPage > 1 && (
-            <PaginationItem className="cursor-pointer hover:bg-gray-light rounded-md transtion-all duration-150">
+            <PaginationItem className="bg-famuque-light cursor-pointer hover:bg-famuque rounded-md transtion-all duration-150">
               <PaginationLink onClick={() => handlePageChange(currentPage - 1)}>
                 {currentPage - 1}
               </PaginationLink>
             </PaginationItem>
           )}
 
-          <PaginationItem className="cursor-pointer">
-            <PaginationLink className="bg-gray-light hover:bg-gray border-0" isActive>
+          <PaginationItem >
+            <PaginationLink className="bg-famuque text-white pointer-events-none " isActive>
               {currentPage}
             </PaginationLink>
           </PaginationItem>
 
           {currentPage < totalPages && (
-            <PaginationItem className="cursor-pointer hover:bg-gray-light rounded-md transtion-all duration-150">
+            <PaginationItem className="bg-famuque-light cursor-pointer hover:bg-famuque rounded-md transtion-all duration-150">
               <PaginationLink onClick={() => handlePageChange(currentPage + 1)}>
                 {currentPage + 1}
               </PaginationLink>
@@ -82,7 +82,7 @@ export function FamuquePagination({
         </PaginationContent>
 
         <PaginationNext
-          className={`hover:text-gray cursor-pointer ${currentPage === totalPages ? "opacity-50 pointer-events-none" : ""}`}
+          className={`bg-famuque-light hover:bg-famuque shadow-none cursor-pointer ${currentPage === totalPages ? "bg-white  opacity-50 pointer-events-none" : ""}`}
           isActive={currentPage < totalPages}
           onClick={() => handlePageChange(currentPage + 1)}
         />
