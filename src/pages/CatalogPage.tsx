@@ -61,13 +61,13 @@ function CatalogPage() {
         />
         {loading ? (
           <div className="flex flex-col gap-2 items-center justify-center w-full h-strap">
-            <label className="font-avenir-light text-th-1 text-gray-500">Cargando productos...</label>
+            <label className="font-avenir-light text-th-1 text-center text-gray-500">Cargando productos...</label>
             <Loader2 className=" animate-spin size-comp-3 text-gray-500" />
           </div>
         ) : (
           <>
           <section className="bg-white flex flex-col gap-4 w-full items-center justify-start p-8">
-            <div className="grid grid-cols-1 mobile:grid-cols-1 tablet:grid-cols-3 laptop:grid-cols-4 gap-std-3 p-comp-1 tablet:p-comp-1-desktop w-full max-w-screen-desktop">
+            <div className="grid grid-cols-1 mobile:grid-cols-1 tablet:grid-cols-3 laptop:grid-cols-4 gap-std-3 tablet:p-comp-1-desktop w-full max-w-screen-desktop">
               {productos.map((producto) => (
                 <FamuqueProductCard
                 key={producto.id}
