@@ -7,12 +7,13 @@ import { FamuqueHeader } from "@/components/FamuqueHeader"
 import { FamuqueProductCard } from "@/components/FamuqueProductCard/FamuqueProductCard"
 import { FamuquePagination } from "@/components/FamuquePagination"
 
+const ITEMS_PER_PAGE = 1
+
 function CatalogPage() {
   const [productos, setProductos] = useState<any[]>([])
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
-  const ITEMS_PER_PAGE = 1
-  const search = "" // podrías usar un estado en el futuro
+  // const search = ""
 
   useEffect(() => {
     async function fetchProductos() {
