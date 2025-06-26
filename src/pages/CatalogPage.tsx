@@ -91,9 +91,9 @@ function CatalogPage() {
               variant="secondary"
               labelClassName="font-avenir-medium flex flex-row gap-std-2"
             >
-              <label className="cursor-pointer hidden mobile:block">
+              <span className="hidden mobile:block">
                 Filtrar
-              </label>
+              </span>
               <FilterIcon className="size-comp-1" />             
             </FamuqueButton>
             <div className="flex items-center gap-std-3">
