@@ -6,42 +6,52 @@ import { FamuqueFooter } from "@/components/FamuqueFooter"
 import { FamuqueHeader } from "@/components/FamuqueHeader"
 import { FamuqueProductCard } from "@/components/FamuqueProductCard/FamuqueProductCard"
 import { FamuquePagination } from "@/components/FamuquePagination"
-import { Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react"
 
-const ITEMS_PER_PAGE = 1
+const ITEMS_PER_PAGE = 2
 
 function CatalogPage() {
   const [productos, setProductos] = useState<any[]>([])
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
   const [loading, setLoading] = useState(true)
-  // const search = ""
+  const [search, setSearch] = useState("")
 
   useEffect(() => {
     async function fetchProductos() {
-      
       setLoading(true)
       const from = (currentPage - 1) * ITEMS_PER_PAGE
       const to = from + ITEMS_PER_PAGE - 1
 
-      const { data, error, count } = await supabase
+      let query = supabase
         .from("product")
-        .select("*", { count: "exact" }) // importante para obtener total
-        .range(from, to)
+        .select("*", { count: "exact" })
+
+      if (search.trim() !== "") {
+        const keyword = `%${search}%`
+        query = query.or(`name.ilike.${keyword},description.ilike.${keyword}`)
+      }
+
+      const { data, error, count } = await query.range(from, to)
 
       if (error) {
         console.error("Error al obtener productos:", error)
+        setProductos([])
+        setTotalPages(1)
+        setLoading(false)
         return
       }
 
-      const totalPages = Math.ceil((count ?? 0) / ITEMS_PER_PAGE)
+      const total = count ?? 0
+      const totalPages = Math.max(1, Math.ceil(total / ITEMS_PER_PAGE))
 
       setProductos(data || [])
       setTotalPages(totalPages)
       setLoading(false)
     }
+
     fetchProductos()
-  }, [currentPage])
+  }, [currentPage, search])
 
   return (
     <>
@@ -59,48 +69,74 @@ function CatalogPage() {
             { label: "Catálogo" },
           ]}
         />
+
+        {/* Buscador */}
+        <nav className="w-full flex justify-center bg-famuque-lightest text-th-4 tablet:text-th-3">
+          <div className="w-full max-w-screen-desktop mx-std-3 my-4 flex items-center justify-end space-x-std-2">
+            <input 
+              className="bg-white p-4 focus:outline-none"
+              placeholder="Buscar productos..."
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
+        </nav>
+
+        {/* Estado de carga */}
         {loading ? (
           <div className="flex flex-col gap-2 items-center justify-center w-full h-strap">
-            <label className="font-avenir-light text-th-1 text-center text-gray-500">Cargando productos...</label>
-            <Loader2 className=" animate-spin size-comp-3 text-gray-500" />
+            <label className="font-avenir-light text-th-1 text-center text-gray-500">
+              Cargando productos...
+            </label>
+            <Loader2 className="animate-spin size-comp-3 text-gray-500" />
           </div>
         ) : (
           <>
-          <section className="bg-white flex flex-col gap-4 w-full items-center justify-start p-8">
-            <div className="grid grid-cols-1 mobile:grid-cols-1 tablet:grid-cols-3 laptop:grid-cols-4 gap-std-3 tablet:p-comp-1-desktop w-full max-w-screen-desktop">
-              {productos.map((producto) => (
-                <FamuqueProductCard
-                key={producto.id}
-                slug={producto.slug}
-                name={producto.name}
-                description={producto.description}
-                price={producto.price}
-                oldPrice={producto.old_price}
-                discount={producto.discount}
-                image={producto.image}
-                showAddToCart={false}
-                showShare={false}
+            {/* Productos */}
+            <section className="bg-white flex flex-col gap-4 w-full items-center justify-center py-comp-1">
+              <div className="grid grid-cols-1 mobile:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-std-3  max-w-screen-desktop">
+                {productos.length === 0 ? (
+                  <p className="text-th-2 text-gray-500 col-span-full text-center">
+                    No se encontraron productos.
+                  </p>
+                ) : (
+                  productos.map((producto) => (
+                    <FamuqueProductCard
+                      key={producto.id}
+                      slug={producto.slug}
+                      name={producto.name}
+                      description={producto.description}
+                      price={producto.price}
+                      oldPrice={producto.old_price}
+                      discount={producto.discount}
+                      image={producto.image}
+                      showAddToCart={false}
+                      showShare={false}
+                    />
+                  ))
+                )}
+              </div>
+            </section>
+
+            {/* Paginación */}
+            {totalPages > 1 && (
+              <div className="flex justify-center w-full p-4 z-20">
+                <FamuquePagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={setCurrentPage}
+                  className="w-full max-w-screen-desktop"
                 />
-              ))}
-            </div>
-          </section>
-        
-        {totalPages > 1 && (
-          <div className="flex justify-center w-full p-4 z-20">
-          <FamuquePagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={setCurrentPage}
-          className="w-full max-w-screen-desktop"
-          />
-          </div>
+              </div>
+            )}
+          </>
         )}
-        </>
-        )}
+
         <FamuqueFooter />
-        </DefaultLayout>
-        </>
-      )
+      </DefaultLayout>
+    </>
+  )
 }
 
 export default CatalogPage
