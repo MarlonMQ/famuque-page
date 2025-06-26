@@ -14,7 +14,7 @@ function HomePage() {
       <meta name="description" content="Explora nuestros productos agrícolas en línea" />
       <link rel="canonical" href="https://famuque.com/dev" />
       <DefaultLayout>
-        <FamuqueNavBar absolute/>
+        <FamuqueNavBar absolute showCart={false} showLogin={false} showSearch={false}/>
         <section className="relative flex flex-row items-center tablet:justify-end w-full h-screen ">
           <img src={FamuqueBackground} alt="Famuque" className="absolute w-full h-screen object-cover z-10" />
           <div className="z-10 bg-famuque-light mx-std-3 tablet:mx-comp-3-desktop w-3xl p-comp-1 tablet:p-comp-1-desktop flex flex-col items-start gap-std-2-desktop">

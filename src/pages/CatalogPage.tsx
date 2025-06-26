@@ -6,9 +6,15 @@ import { FamuqueFooter } from "@/components/FamuqueFooter"
 import { FamuqueHeader } from "@/components/FamuqueHeader"
 import { FamuqueProductCard } from "@/components/FamuqueProductCard/FamuqueProductCard"
 import { FamuquePagination } from "@/components/FamuquePagination"
+import { FamuqueInput } from "@/components/FamuqueInput"
+import { Label } from "@/components/static/Labels"
 import { Loader2 } from "lucide-react"
+import { useDebounce } from "@/lib/utils"
+import SearchIcon from "@/assets/logos/famuque-search.svg?react";
+import { FamuqueButton } from "@/components/FamuqueButton"
+import FilterIcon from "@/assets/logos/famuque-filters.svg?react"
 
-const ITEMS_PER_PAGE = 2
+const ITEMS_PER_PAGE = 1
 
 function CatalogPage() {
   const [productos, setProductos] = useState<any[]>([])
@@ -16,6 +22,8 @@ function CatalogPage() {
   const [totalPages, setTotalPages] = useState(1)
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState("")
+  const [searchInput, setSearchInput] = useState("") // lo que escribe el usuario
+  const debouncedSearch = useDebounce(searchInput, 300) // el valor estabilizado
 
   useEffect(() => {
     async function fetchProductos() {
@@ -53,6 +61,12 @@ function CatalogPage() {
     fetchProductos()
   }, [currentPage, search])
 
+
+  useEffect(() => {
+    setCurrentPage(1)
+    setSearch(debouncedSearch)
+  }, [debouncedSearch])
+
   return (
     <>
       <title>Catálogo | Famuque</title>
@@ -72,14 +86,26 @@ function CatalogPage() {
 
         {/* Buscador */}
         <nav className="w-full flex justify-center bg-famuque-lightest text-th-4 tablet:text-th-3">
-          <div className="w-full max-w-screen-desktop mx-std-3 my-4 flex items-center justify-end space-x-std-2">
-            <input 
-              className="bg-white p-4 focus:outline-none"
-              placeholder="Buscar productos..."
-              type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
+          <div className="w-full max-w-screen-desktop mx-std-3 my-4 flex items-center justify-between gap-x-std-2">
+            <FamuqueButton 
+              variant="secondary"
+              labelClassName="font-avenir-medium flex flex-row gap-std-2"
+            >
+              <label className="cursor-pointer hidden mobile:block">
+                Filtrar
+              </label>
+              <FilterIcon className="size-comp-1" />             
+            </FamuqueButton>
+            <div className="flex items-center gap-std-3">
+              <Label className="hidden mobile:block" text="Buscar Producto:" />
+              <FamuqueInput 
+                variant="search" 
+                placeholder="nombre, código o descripción" 
+                value={searchInput} 
+                onChange={(e) => setSearchInput(e.target.value)}
+                icon={<SearchIcon className="size-comp-1 text-gray-500" />}
+              />
+            </div>
           </div>
         </nav>
 

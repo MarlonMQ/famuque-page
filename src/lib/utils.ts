@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react"
 import { clsx, type ClassValue } from "clsx"
 import { toast } from 'react-toastify';
 
@@ -24,4 +25,17 @@ export function copyToClipBoard(text: string, type: string = 'Text'): void {
       toast.error(`Failed to copy ${type.toLowerCase()}`);
       console.error('Clipboard error:', err);
     });
+}
+
+
+export function useDebounce(value: string, delay: number) {
+  const [debouncedValue, setDebouncedValue] = useState(value)
+
+  useEffect(() => {
+    const handler = setTimeout(() => setDebouncedValue(value), delay)
+
+    return () => clearTimeout(handler) // Cancela si escribe otra letra antes del delay
+  }, [value, delay])
+
+  return debouncedValue
 }

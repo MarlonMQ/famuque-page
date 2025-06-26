@@ -1,25 +1,20 @@
 import React from 'react';
-
-interface RequiredLabelProps {
-  text: string;
-}
-
-const RequiredLabel: React.FC<RequiredLabelProps> = ({ text }) => (
-  <label className="text-th-3 font-avenir-medium">
-    {text}&nbsp;
-    <span className="text-error">*</span>
-  </label>
-);
+import { cn } from '@/lib/utils';
 
 interface LabelProps {
   text: string;
+  className?: string;
+  required?: boolean;
 }
 
-const Label: React.FC<LabelProps> = ({ text }) => (
-  <label className="text-th-3 font-avenir-medium">
+export const Label: React.FC<LabelProps> = ({ text, className, required }) => (
+  <label className={cn("text-th-3 font-avenir-medium", className)}>
     {text}
+    {required && 
+      <>
+        &nbsp;
+        <span className="text-error">*</span>
+      </>
+    }
   </label>
 );
-
-
-export { RequiredLabel, Label };

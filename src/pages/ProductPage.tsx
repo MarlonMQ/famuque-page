@@ -72,7 +72,7 @@ export const ProductPage = () => {
       />
 
       <DefaultLayout>
-        <FamuqueNavBar />
+        <FamuqueNavBar showCart={false} showLogin={false} showSearch={false}/>
         <FamuqueHeader
           items={[
             { label: "Inicio", href: "/" },

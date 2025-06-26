@@ -4,7 +4,7 @@ import { FamuqueFooter } from "@/components/FamuqueFooter"
 import { FamuqueHeader } from "@/components/FamuqueHeader"
 import { FamuqueInput } from "@/components/FamuqueInput"
 import { FamuqueButton } from "@/components/FamuqueButton"
-import { Label, RequiredLabel } from "@/components/static/Labels"
+import { Label } from "@/components/static/Labels"
 import { FamuqueTextArea } from "@/components/FamuqueTextArea"
 import LocationIcon from "@/assets/logos/famuque-location.svg?react"
 import PhoneIcon from "@/assets/logos/famuque-phone.svg?react"
@@ -19,7 +19,7 @@ function ContactPage() {
       <meta name="description" content="Contáctanos para más información sobre nuestros productos y servicios agrícolas. Estamos para ayudarte." />
       <link rel="canonical" href="https://famuque.com/contact" />
       <DefaultLayout >
-        <FamuqueNavBar/>
+        <FamuqueNavBar showCart={false} showLogin={false} showSearch={false}/>
         <FamuqueHeader items={[
           { label: "Inicio", href: "/dev" },
           { label: "Contacto" }
@@ -72,15 +72,15 @@ function ContactPage() {
           </div>
           <fieldset className="w-full max-w-screen-wide grid grid-cols-1  gap-y-std-2 gap-x-comp-3 order-1 laptop:order-2">
             <div className="grid gap-std-1">
-              <RequiredLabel text="Tu Nombre" />
+              <Label required text="Tu Nombre" />
               <FamuqueInput name={"originalImplantingDate"} />
             </div>
             <div className="grid gap-std-1">
-              <RequiredLabel text="Correo Electrónico" />
+              <Label required text="Correo Electrónico" />
               <FamuqueInput name={"explantDate"} />
             </div>
             <div className="grid gap-std-1">
-              <RequiredLabel text="Número de teléfono" />
+              <Label required text="Número de teléfono" />
               <FamuqueInput name={"explantDate"} />
             </div>
             <div className="grid gap-std-1">
