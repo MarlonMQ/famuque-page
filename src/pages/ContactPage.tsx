@@ -19,7 +19,7 @@ function ContactPage() {
       <meta name="description" content="Contáctanos para más información sobre nuestros productos y servicios agrícolas. Estamos para ayudarte." />
       <link rel="canonical" href="https://famuque.com/contact" />
       <DefaultLayout >
-        <FamuqueNavBar showCart={false} showLogin={false} showSearch={false}/>
+        <FamuqueNavBar showAccountButtons={false}/>
         <FamuqueHeader items={[
           { label: "Inicio", href: "/dev" },
           { label: "Contacto" }

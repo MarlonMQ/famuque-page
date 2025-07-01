@@ -6,15 +6,11 @@ import { FamuqueFooter } from "@/components/FamuqueFooter"
 import { FamuqueHeader } from "@/components/FamuqueHeader"
 import { FamuqueProductCard } from "@/components/FamuqueProductCard/FamuqueProductCard"
 import { FamuquePagination } from "@/components/FamuquePagination"
-import { FamuqueInput } from "@/components/FamuqueInput"
-import { Label } from "@/components/static/Labels"
 import { Loader2 } from "lucide-react"
 import { useDebounce } from "@/lib/utils"
-import SearchIcon from "@/assets/logos/famuque-search.svg?react";
-import { FamuqueButton } from "@/components/FamuqueButton"
-import FilterIcon from "@/assets/logos/famuque-filters.svg?react"
+import { FamuqueSearcher } from "@/components/FamuqueSearcher"
 
-const ITEMS_PER_PAGE = 1
+const ITEMS_PER_PAGE = 4
 
 function CatalogPage() {
   const [productos, setProductos] = useState<any[]>([])
@@ -76,7 +72,7 @@ function CatalogPage() {
       />
       <link rel="canonical" href="https://famuque.com/catalog" />
       <DefaultLayout>
-        <FamuqueNavBar showCart={false} showLogin={false} showSearch={false} />
+        <FamuqueNavBar showAccountButtons={false}/>
         <FamuqueHeader
           items={[
             { label: "Inicio", href: "/dev" },
@@ -85,78 +81,53 @@ function CatalogPage() {
         />
 
         {/* Buscador */}
-        <nav className="w-full flex justify-center bg-famuque-lightest text-th-4 tablet:text-th-3">
-          <div className="w-full max-w-screen-desktop mx-std-3 my-4 flex items-center justify-between gap-x-std-2">
-            <FamuqueButton 
-              variant="secondary"
-              labelClassName="font-avenir-medium flex flex-row gap-std-2"
-            >
-              <span className="hidden mobile:block">
-                Filtrar
-              </span>
-              <FilterIcon className="size-comp-1" />             
-            </FamuqueButton>
-            <div className="flex items-center gap-std-3">
-              <Label className="hidden mobile:block" text="Buscar Producto:" />
-              <FamuqueInput 
-                variant="search" 
-                placeholder="nombre, código o descripción" 
-                value={searchInput} 
-                onChange={(e) => setSearchInput(e.target.value)}
-                icon={<SearchIcon className="size-comp-1 text-gray-500" />}
-              />
-            </div>
-          </div>
-        </nav>
+        <FamuqueSearcher
+          searchValue={searchInput}
+          onSearchChange={setSearchInput}
+          showFilterButton={true}
+        />
 
         {/* Estado de carga */}
         {loading ? (
-          <div className="flex flex-col gap-2 items-center justify-center w-full h-strap">
+          <div className="flex flex-col gap-comp-1 w-full min-h-minimal items-center justify-center">
             <label className="font-avenir-light text-th-1 text-center text-gray-500">
               Cargando productos...
             </label>
             <Loader2 className="animate-spin size-comp-3 text-gray-500" />
           </div>
         ) : (
-          <>
-            {/* Productos */}
-            <section className="bg-white flex flex-col gap-4 w-full items-center justify-center py-comp-1">
-              <div className="grid grid-cols-1 mobile:grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-std-3  max-w-screen-desktop">
-                {productos.length === 0 ? (
-                  <p className="text-th-2 text-gray-500 col-span-full text-center">
-                    No se encontraron productos.
-                  </p>
-                ) : (
-                  productos.map((producto) => (
-                    <FamuqueProductCard
-                      key={producto.id}
-                      slug={producto.slug}
-                      name={producto.name}
-                      description={producto.description}
-                      price={producto.price}
-                      oldPrice={producto.old_price}
-                      discount={producto.discount}
-                      image={producto.image}
-                      showAddToCart={false}
-                      showShare={false}
-                    />
-                  ))
-                )}
-              </div>
-            </section>
-
-            {/* Paginación */}
+          <section className="flex flex-col gap-comp-2 w-full items-center justify-center py-comp-2">
+            <div className="grid grid-cols-1 mobile:grid-cols-1 tablet:grid-cols-2 medium:grid-cols-3 laptop:grid-cols-4 desktop:grid-cols-4 gap-comp-1 mx-comp-1 max-w-screen-desktop">
+              {productos.length === 0 ? (
+                <p className="text-th-2 text-gray-500 col-span-full text-center">
+                  No se encontraron productos.
+                </p>
+              ) : (
+                productos.map((producto) => (
+                  <FamuqueProductCard
+                    key={producto.id}
+                    slug={producto.slug}
+                    name={producto.name}
+                    description={producto.description}
+                    price={producto.price}
+                    oldPrice={producto.old_price}
+                    discount={producto.discount}
+                    image={producto.image}
+                    showAddToCart={false}
+                    showShare={false}
+                  />
+                ))
+              )}
+            </div>
             {totalPages > 1 && (
-              <div className="flex justify-center w-full p-4 z-20">
-                <FamuquePagination
-                  currentPage={currentPage}
-                  totalPages={totalPages}
-                  onPageChange={setCurrentPage}
-                  className="w-full max-w-screen-desktop"
-                />
-              </div>
+              <FamuquePagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
+                className="w-full max-w-screen-desktop"
+              />
             )}
-          </>
+          </section>
         )}
 
         <FamuqueFooter />

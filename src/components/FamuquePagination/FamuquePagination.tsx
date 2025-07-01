@@ -72,7 +72,7 @@ export function FamuquePagination({
           {currentPage < totalPages - 1 && (
             <>
               {currentPage < totalPages - 2 && <PaginationEllipsis />}
-              <PaginationItem className="cursor-pointer hover:bg-gray-light rounded-md transtion-all duration-150">
+              <PaginationItem className="bg-famuque-light cursor-pointer hover:bg-famuque rounded-md transtion-all duration-150">
                 <PaginationLink onClick={() => handlePageChange(totalPages)}>
                   {totalPages}
                 </PaginationLink>

@@ -9,13 +9,14 @@ import FamuqueCart from "@/assets/logos/famuque-cart.svg?react";
 import { FamuqueButton } from '@/components/FamuqueButton';
 
 interface FamuqueNavBarProps {
+  showAccountButtons?: boolean;
   showLogin?: boolean;
   showSearch?: boolean;
   showCart?: boolean;
   absolute?: boolean;
 }
 
-export function FamuqueNavBar({ showLogin = true, showSearch = true, showCart = true, absolute = false }: FamuqueNavBarProps) {
+export function FamuqueNavBar({showAccountButtons= true,  showLogin = true, showSearch = true, showCart = true, absolute = false }: FamuqueNavBarProps) {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -74,32 +75,34 @@ export function FamuqueNavBar({ showLogin = true, showSearch = true, showCart = 
             </FamuqueButton>
           ))}
         </div>
-        <div className="hidden tablet:flex gap-std-3-desktop">
-          {showLogin && (
-            <FamuqueButton
+        {showAccountButtons && (
+          <div className="hidden tablet:flex gap-std-3-desktop">
+            {showLogin && (
+              <FamuqueButton
               variant="secondary"
-              onClick={() => navigate('/login')}
-            >
-              <FamuqueUser className="w-6 h-6" />
-            </FamuqueButton>
-          )}
-          {showSearch && (
-            <FamuqueButton
+                onClick={() => navigate('/login')}
+                >
+                <FamuqueUser className="w-6 h-6" />
+              </FamuqueButton>
+            )}
+            {showSearch && (
+              <FamuqueButton
               variant="secondary"
               onClick={() => navigate('/search')}
-            >
-              <FamuqueSearch className="w-6 h-6" />
-            </FamuqueButton>
-          )}
-          {showCart && (
-            <FamuqueButton
+              >
+                <FamuqueSearch className="w-6 h-6" />
+              </FamuqueButton>
+            )}
+            {showCart && (
+              <FamuqueButton
               variant="secondary"
               onClick={() => navigate('/cart')}
-            >
-              <FamuqueCart className="w-6 h-6" />
-            </FamuqueButton>
-          )}
-        </div>
+              >
+                <FamuqueCart className="w-6 h-6" />
+              </FamuqueButton>
+            )}
+          </div>
+        )}
       </nav>
     </div>
   );

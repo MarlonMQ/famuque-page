@@ -137,7 +137,7 @@
   --text-th-max: 60px;
   --text-th-1: 40px;
   --text-th-2: 30px;
-  --text-th-3: 20px;
+  --text-th-3: 22px;
   --text-th-4: 18px;
   --text-th-5: 18px;
   --text-th-6: 14px;
@@ -147,7 +147,7 @@
   --text-mh-max: 50px;
   --text-mh-1: 32px;
   --text-mh-2: 24px;
-  --text-mh-3: 18px;
+  --text-mh-3: 20px;
   --text-mh-4: 16px;
   --text-mh-5: 16px;
   --text-mh-6: 14px;
@@ -174,22 +174,24 @@
   --spacing-comp-2-desktop: 100px;
 
   --spacing-comp-3: 100px;
-  --spacing-comp-3-tablet: 150px;
+  --spacing-comp-3-tablet: 125px;
   --spacing-comp-3-desktop: 150px;
 
 
   --breakpoint-minimal: 360px;
   --breakpoint-mobile: 475px;
   --breakpoint-tablet: 768px;
-  --breakpoint-medium: 920px;
-  --breakpoint-laptop: 1024px;
+  --breakpoint-medium: 970px;
+  --breakpoint-laptop: 1220px;
   --breakpoint-desktop: 1366px;
   --breakpoint-wide: 1640px;
   --breakpoint-maximum: 1920px;
 
   --spacing-strap-mobile: 250px;
   --spacing-strap: 350px;
-  --spacing-minimal: 500px;
+  --spacing-strap-tablet: 375px;
+  --spacing-minimal-1: 400px;
+  --spacing-minimal-2: 500px;
   --spacing-short: 700px;
   --spacing-medium: 768px;
   --spacing-tall: 900px;
