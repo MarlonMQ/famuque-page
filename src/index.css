@@ -192,6 +192,7 @@
   --spacing-strap-tablet: 375px;
   --spacing-minimal-1: 400px;
   --spacing-minimal-2: 500px;
+  --spacing-minimal-3: 550px;
   --spacing-short: 700px;
   --spacing-medium: 768px;
   --spacing-tall: 900px;
@@ -199,3 +200,15 @@
   --spacing-ultra-tall: 1440px;
   --spacing-maximum: 2160px;
 }
+
+.toast-custom {
+  background-color: #B88E2F;
+}
+
+.toast-progress-custom {
+  background-color: #B88E2F !important; /* Tailwind green-500 */
+  height: 4px !important;
+  color: #B88E2F !important;
+  --toastify-text-color-success: #fff;
+}
+

@@ -1,0 +1,1 @@
+export {FamuqueCarousel} from './FamuqueCarousel'
