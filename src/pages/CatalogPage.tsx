@@ -112,7 +112,7 @@ function CatalogPage() {
                     price={producto.price}
                     oldPrice={producto.old_price}
                     discount={producto.discount}
-                    image={producto.image}
+                    image={`${producto.link}images/main.png`}
                     showAddToCart={false}
                     showShare={false}
                   />

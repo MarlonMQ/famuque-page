@@ -19,7 +19,7 @@ export const FamuqueHeader: React.FC<BreadcrumbProps> = ({
 }) => {
   if (variants === "product") {
     return (
-      <nav className="w-full flex justify-center bg-famuque-lightest text-th-4 tablet:text-th-3">
+      <nav className="w-full flex justify-center bg-famuque-lightest text-th-4 tablet:text-th-3 px-4">
         <div className="w-full max-w-screen-desktop mx-std-3 my-comp-1 flex items-center space-x-std-2 ">
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
@@ -37,7 +37,7 @@ export const FamuqueHeader: React.FC<BreadcrumbProps> = ({
         {/* Línea divisoria */}
         <div className="mx-4 h-std-3-tablet border-l border-gray " />
         {/* Último elemento como título */}
-        <span className="text-black  font-avenir-medium">
+        <span className="text-black  font-avenir-medium truncate">
           {items[items.length - 1].label}
         </span>
         </div>  
