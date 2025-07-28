@@ -15,7 +15,7 @@ interface FamuqueCarouselProps {
   images?: string[];
   products?: ProductProps[];
   slug?: string;
-  variant?: "productImages" | "relatedProducts";
+  variant?: "Images" | "Products";
   className?: string;
   canSlide?: boolean;
   autoSlide?: boolean;
@@ -34,7 +34,7 @@ export const FamuqueCarousel: React.FC<FamuqueCarouselProps> = ({
   onDragFree = false,
   loop = false,
   disabled = false,
-  variant = "productImages",
+  variant = "Images",
   products = []
 }) => {
   const [mainImage, setMainImage] = useState<string>(images[0]);
@@ -48,14 +48,14 @@ export const FamuqueCarousel: React.FC<FamuqueCarouselProps> = ({
   };
   const plugins = autoSlide ? [Autoplay({ delay: 4000 })] : [];
 
-  if (variant === "productImages" && (!images || images.length === 0)) {
+  if (variant === "Images" && (!images || images.length === 0)) {
     return <div>No hay imágenes disponibles.</div>;
   }
 
 
   return (
     <>
-    {variant === "productImages" && (
+    {variant === "Images" && (
     <div 
       className={
         cn(
@@ -114,19 +114,19 @@ export const FamuqueCarousel: React.FC<FamuqueCarouselProps> = ({
       )}
     </div>
     )}
-    {variant === "relatedProducts" && (
+    {variant === "Products" && (
       <Carousel
         opts={options}
         plugins={plugins}
         className={`${!canSlide  ? "pointer-events-none opacity-50 " : "select-none"}`}
       >
         <CarouselContent className="flex">
-          {products.map((relatedProduct) => (
+          {products.map((product) => (
             <CarouselItem
-            key={relatedProduct.id}
+            key={product.id}
             className="flex justify-center basis-full tablet:basis-1/2 medium:basis-1/3 laptop:basis-1/4"
             >
-              <FamuqueProductCard product={relatedProduct} />
+              <FamuqueProductCard product={product} />
             </CarouselItem>
           ))}
         </CarouselContent>

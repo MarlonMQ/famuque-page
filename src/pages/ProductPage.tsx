@@ -185,7 +185,7 @@ export const ProductPage = () => {
         </div>
         <section className="flex flex-col gap-comp-2 w-full max-w-screen-desktop py-comp-2 px-comp-1">
           <h2 className="text-gh-6 medium:text-gh-4 font-avenir-heavy">Productos relacionados</h2>
-          <FamuqueCarousel variant="relatedProducts" products={relatedProducts} className="w-full" />
+          <FamuqueCarousel variant="Products" products={relatedProducts} className="w-full" />
         </section>
         </>
         )}
