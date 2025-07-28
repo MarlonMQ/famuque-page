@@ -9,37 +9,16 @@ import NotFoundPage from "./NotFoundPage";
 import { FamuqueMetadata } from "@/components/FamuqueMetaData";
 import { FamuqueCarousel } from "@/components/FamuqueCarousel";
 import { copyToClipBoard } from "@/lib/utils";
-
-interface ProductProps {
-  id: number;
-  name: string;
-  description: string;
-  price: string;
-  oldPrice?: string;
-  distributorPrice?: string;
-  discount?: string;
-  image: string;
-  slug: string;
-  stock?: number;
-  sku?: string;
-  brand?: string;
-  features?: string[];
-  onlyCatalog?: boolean;
-  details?: { 
-    product_id: number;
-    code: string;
-    size_description: string;
-    pack_qty: number;
-    total_qty: number;
-  }[] | undefined;
-}
+import { ProductProps } from "@/types/Product";
 
 export const ProductPage = () => {
 
   const { slug } = useParams();
   const [product, setProduct] = useState<ProductProps | null>(null);
   const [carouselImages, setCarouselImages] = useState<string[]>([]);
+  const [relatedProducts, setRelatedProducts] = useState<ProductProps[]>([]);
   const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     if (!slug) return;
@@ -53,7 +32,7 @@ export const ProductPage = () => {
       .eq("slug", slug)
       .single();
 
-    const { data: details, error: detailsError } = await supabase
+      const { data: details, error: detailsError } = await supabase
       .from("product_details")
       .select("*")
       .eq("product_id", product?.id);
@@ -72,9 +51,11 @@ export const ProductPage = () => {
           ...product,
           details: details || []
         });
+
+        await fetchImages(product.slug);
+        await fetchRelatedProducts(product.id);
       }
 
-      fetchImages(product.slug);
     }
     
     async function fetchImages(slug: string) {
@@ -94,6 +75,37 @@ export const ProductPage = () => {
       } finally {
         setLoading(false);
       }
+    }
+
+    async function fetchRelatedProducts(productId: number) {
+      const { data: relatedIdsData, error: relatedIdsError } = await supabase
+        .from("related_products")
+        .select("related_product_id")
+        .eq("product_id", productId);
+  
+      if (relatedIdsError) {
+        console.error("Error fetching related product IDs:", relatedIdsError);
+        return;
+      }
+  
+      const relatedIds = relatedIdsData?.map((rel) => rel.related_product_id) || [];
+  
+      if (relatedIds.length === 0) {
+        setRelatedProducts([]);
+        return;
+      }
+  
+      const { data: relatedProductsData, error: relatedProductsError } = await supabase
+        .from("product")
+        .select("*")
+        .in("id", relatedIds);
+  
+      if (relatedProductsError) {
+        console.error("Error fetching related products:", relatedProductsError);
+        return;
+      }
+  
+      setRelatedProducts(relatedProductsData || []);
     }
 
     fetchProduct();
@@ -132,10 +144,9 @@ export const ProductPage = () => {
               {product.details && product.details.length > 0 && (() => {
                 const showPackQty = product.details.some(detail => detail.pack_qty != null && detail.pack_qty !== undefined);
                 const showTotalQty = product.details.some(detail => detail.total_qty != null && detail.total_qty !== undefined);
-
                 return (
                   <div className="w-full overflow-x-auto">
-                      <table className="w-full min-w-short text-left border-separate border-spacing-y-2">
+                      <table className="w-full min-w-short text-left border-separate border-spacing-y-std-2 medium:border-spacing-y-std-3">
                         <thead>
                           <tr className="text-th-4 font-avenir-medium">
                             <th className="px-2">Código</th>
@@ -167,7 +178,17 @@ export const ProductPage = () => {
             <div className="grid grid-cols-2 gap-4 justify-self-end"></div>
           </div>
         </section>
-
+        {relatedProducts.length > 0 && (
+        <>
+        <div className="w-full max-w-screen-desktop px-comp-1" >
+          <hr className="border-t border-gray-light" />
+        </div>
+        <section className="flex flex-col gap-comp-2 w-full max-w-screen-desktop py-comp-2 px-comp-1">
+          <h2 className="text-gh-6 medium:text-gh-4 font-avenir-heavy">Productos relacionados</h2>
+          <FamuqueCarousel variant="relatedProducts" products={relatedProducts} className="w-full" />
+        </section>
+        </>
+        )}
         <FamuqueFooter />
       </DefaultLayout>
     </>

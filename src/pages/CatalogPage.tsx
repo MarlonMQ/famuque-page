@@ -97,7 +97,7 @@ function CatalogPage() {
           </div>
         ) : (
           <section className="flex flex-col gap-comp-2 w-full items-center justify-center py-comp-2">
-            <div className="grid grid-cols-1 mobile:grid-cols-1 tablet:grid-cols-2 medium:grid-cols-3 laptop:grid-cols-4 desktop:grid-cols-4 gap-comp-1 mx-comp-1 max-w-screen-desktop">
+            <div className="grid grid-cols-1 tablet:grid-cols-2 medium:grid-cols-3 laptop:grid-cols-4 gap-comp-1 mx-comp-1 max-w-screen-desktop">
               {productos.length === 0 ? (
                 <p className="text-th-2 text-gray-500 col-span-full text-center">
                   No se encontraron productos.
@@ -106,13 +106,7 @@ function CatalogPage() {
                 productos.map((producto) => (
                   <FamuqueProductCard
                     key={producto.id}
-                    slug={producto.slug}
-                    name={producto.name}
-                    description={producto.description}
-                    price={producto.price}
-                    oldPrice={producto.old_price}
-                    discount={producto.discount}
-                    image={`${producto.link}images/main.png`}
+                    product={producto}
                     showAddToCart={false}
                     showShare={false}
                   />

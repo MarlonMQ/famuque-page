@@ -8,10 +8,14 @@ import {
   CarouselPrevious
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import { FamuqueProductCard } from "../FamuqueProductCard";
+import { ProductProps } from "@/types/Product";
 
 interface FamuqueCarouselProps {
-  images: string[];
-  slug: string;
+  images?: string[];
+  products?: ProductProps[];
+  slug?: string;
+  variant?: "productImages" | "relatedProducts";
   className?: string;
   canSlide?: boolean;
   autoSlide?: boolean;
@@ -20,15 +24,18 @@ interface FamuqueCarouselProps {
   disabled?: boolean;
 }
 
+
 export const FamuqueCarousel: React.FC<FamuqueCarouselProps> = ({ 
-  images, 
+  images = [], 
   slug, 
   className, 
   canSlide = true, 
   autoSlide = false, 
   onDragFree = false,
   loop = false,
-  disabled = false
+  disabled = false,
+  variant = "productImages",
+  products = []
 }) => {
   const [mainImage, setMainImage] = useState<string>(images[0]);
   const options = {
@@ -40,13 +47,15 @@ export const FamuqueCarousel: React.FC<FamuqueCarouselProps> = ({
     dragFree: onDragFree,
   };
   const plugins = autoSlide ? [Autoplay({ delay: 4000 })] : [];
-  
-  if (!images || images.length === 0) {
+
+  if (variant === "productImages" && (!images || images.length === 0)) {
     return <div>No hay imágenes disponibles.</div>;
   }
 
 
   return (
+    <>
+    {variant === "productImages" && (
     <div 
       className={
         cn(
@@ -56,7 +65,7 @@ export const FamuqueCarousel: React.FC<FamuqueCarouselProps> = ({
         )
       }>
       {/* Imagen principal */}
-      <div className="w-full  aspect-square mb-4">
+      <div className="w-full aspect-square mb-4">
         <img
           src={mainImage}
           alt={`${slug} imagen principal`}
@@ -69,14 +78,13 @@ export const FamuqueCarousel: React.FC<FamuqueCarouselProps> = ({
         <Carousel
           opts={options}
           plugins={plugins}
-          orientation="horizontal"
           className={`${!canSlide  ? "pointer-events-none opacity-50" : ""}`}
         >
           <CarouselContent className="flex">
             {images.map((imgUrl, index) => (
               <CarouselItem
                 key={index}
-                className="basis-1/3 tablet:basis-1/4 p-1" // 4 elementos visibles
+                className="basis-1/3 tablet:basis-1/4 p-1"
               >
                 <div
                   className={`aspect-square rounded-sm overflow-hidden hover:brightness-75 cursor-pointer transition duration-300 ${
@@ -94,7 +102,6 @@ export const FamuqueCarousel: React.FC<FamuqueCarouselProps> = ({
             ))}
           </CarouselContent>
 
-          {/* Flechas */}
           <CarouselPrevious
             variant="default"
             className="absolute -left-6 text-black hover:text-gray"
@@ -106,5 +113,34 @@ export const FamuqueCarousel: React.FC<FamuqueCarouselProps> = ({
         </Carousel>
       )}
     </div>
+    )}
+    {variant === "relatedProducts" && (
+      <Carousel
+        opts={options}
+        plugins={plugins}
+        className={`${!canSlide  ? "pointer-events-none opacity-50 " : "select-none"}`}
+      >
+        <CarouselContent className="flex">
+          {products.map((relatedProduct) => (
+            <CarouselItem
+            key={relatedProduct.id}
+            className="flex justify-center basis-full tablet:basis-1/2 medium:basis-1/3 laptop:basis-1/4"
+            >
+              <FamuqueProductCard product={relatedProduct} />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+
+        <CarouselPrevious
+          variant="default"
+          className="absolute -left-6 text-black hover:text-gray"
+        />
+        <CarouselNext
+          variant="default"
+          className="absolute -right-6 text-black hover:text-gray"
+        />
+      </Carousel>
+    )}
+    </>
   );
 };

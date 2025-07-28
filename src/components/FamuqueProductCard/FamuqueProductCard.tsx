@@ -3,26 +3,24 @@ import { Share2 } from "lucide-react";
 import { FamuqueButton } from "../FamuqueButton";
 import { useNavigate } from "react-router-dom";
 
-interface ProductCardProps {
+interface ProductProps {
   slug: string;
   name: string;
-  description?: string;
-  price?: string;
+  description: string;
+  price: string;
   oldPrice?: string;
   discount?: string;
-  image: string;
-  showAddToCart: boolean;
-  showShare: boolean;
+  link: string;
+}
+
+interface ProductCardProps {
+  product: ProductProps;
+  showAddToCart?: boolean;
+  showShare?: boolean;
 }
 
 export const FamuqueProductCard: React.FC<ProductCardProps> = ({
-  slug,
-  name,
-  description,
-  price,
-  oldPrice,
-  discount,
-  image,
+  product,
   showAddToCart = true,
   showShare = true,
 }) => {
@@ -31,20 +29,20 @@ export const FamuqueProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <div 
-      onClick={() => navigate(`/product/${slug}`)}
+      onClick={() => navigate(`/product/${product.slug}`)}
       className="relative group w-full bg-white overflow-hidden cursor-pointer max-w-strap hover:scale-110 stransition-all duration-300"
     >
       <div className="relative h-strap-tablet w-full flex items-center justify-center">
         <img
-          src={image}
-          alt={name}
+          src={product.link + "images/main.png"}
+          alt={product.name}
           className="h-full object-cover transition-transform duration-300"
         />
       </div>
 
-      {discount && (
+      {product.discount && (
         <div className="absolute top-4 right-4 bg-[var(--color-error)] text-white text-sm font-semibold px-3 py-1 rounded-full">
-          {discount}
+          {product.discount}
         </div>
       )}
 
@@ -77,18 +75,18 @@ export const FamuqueProductCard: React.FC<ProductCardProps> = ({
       
       <div className="p-4 bg-gray-lightest min-h-comp-3-desktop">
         <h3 className="text-gray-dark font-avenir-medium text-mh-3 line-clamp-2">
-          {name}
+          {product.name}
         </h3>
-        <p className="text-gray font-avenir-medium text-dh-6 line-clamp-2">{description}</p>
+        <p className="text-gray font-avenir-medium text-dh-6 line-clamp-2">{product.description}</p>
         <div className="flex items-center gap-2 mt-1">
-          {price && (
+          {product.price && (
             <span className="text-gray-dark font-avenir-roman">
-            {price}
+            {product.price}
             </span>
           )}
-          {oldPrice && (
+          {product.oldPrice && (
             <span className="text-gray line-through font-avenir-roman">
-              {oldPrice}
+              {product.oldPrice}
             </span>
           )}
         </div>
