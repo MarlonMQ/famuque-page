@@ -10,15 +10,18 @@ import LocationIcon from "@/assets/logos/famuque-location.svg?react"
 import PhoneIcon from "@/assets/logos/famuque-phone.svg?react"
 import ClockIcon from "@/assets/logos/famuque-clock.svg?react"
 import { ROUTES } from "@/router/routes"
+import { FamuqueMetadata } from "@/components/FamuqueMetaData"
 
 
 function ContactPage() {
 
   return (
     <>
-      <title>Contacto | Famuque</title>
-      <meta name="description" content="Contáctanos para más información sobre nuestros productos y servicios agrícolas. Estamos para ayudarte." />
-      <link rel="canonical" href="https://famuque.com/contact" />
+      <FamuqueMetadata
+        title="Contacto | Famuque"
+        description="Contáctanos para más información sobre nuestros productos y servicios agrícolas. Estamos para ayudarte."
+        canonicalLink="https://famuque.com/contact"
+      />
       <DefaultLayout >
         <FamuqueNavBar showAccountButtons={false}/>
         <FamuqueHeader items={[
