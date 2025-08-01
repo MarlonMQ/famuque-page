@@ -10,7 +10,7 @@ import { Loader2 } from "lucide-react"
 import { useDebounce } from "@/lib/utils"
 import { FamuqueSearcher } from "@/components/FamuqueSearcher"
 
-const ITEMS_PER_PAGE = 4
+const ITEMS_PER_PAGE = 24
 
 function CatalogPage() {
   const [productos, setProductos] = useState<any[]>([])
