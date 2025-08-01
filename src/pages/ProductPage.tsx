@@ -5,20 +5,19 @@ import { FamuqueNavBar } from "@/components/FamuqueNavBar";
 import { DefaultLayout } from "@/components/Layout/DefaultLayout";
 import { FamuqueFooter } from "@/components/FamuqueFooter";
 import { FamuqueHeader } from "@/components/FamuqueHeader";
-import NotFoundPage from "./NotFoundPage";
 import { FamuqueMetadata } from "@/components/FamuqueMetaData";
 import { FamuqueCarousel } from "@/components/FamuqueCarousel";
 import { copyToClipBoard } from "@/lib/utils";
 import { ProductProps } from "@/types/Product";
+import NotFoundPage from "./NotFoundPage";
+
 
 export const ProductPage = () => {
-
   const { slug } = useParams();
   const [product, setProduct] = useState<ProductProps | null>(null);
   const [carouselImages, setCarouselImages] = useState<string[]>([]);
   const [relatedProducts, setRelatedProducts] = useState<ProductProps[]>([]);
   const [loading, setLoading] = useState(true);
-
 
   useEffect(() => {
     if (!slug) return;
@@ -132,21 +131,23 @@ export const ProductPage = () => {
           ]}
           variants="product"
         />
-
         <section className="flex flex-col medium:flex-row w-full items-center medium:items-start py-comp-1 medium:py-comp-2 max-w-screen-desktop gap-comp-1 medium:gap-comp-3 px-comp-1">
           {/* Carousel e imagen */}
           <FamuqueCarousel images={carouselImages} slug={product.slug} className="medium:min-w-minimal-1"/>
 
           {/* Info producto */}
-          <div className="flex flex-col justify-between w-full">
-            <div className="flex flex-col w-full gap-comp-1 medium:gap-comp-3">
-              <label className="text-black text-gh-4 font-avenir-medium">{product.name}</label>
+          <div className="flex flex-col justify-between w-full overflow-auto">
+            <div className="flex flex-col gap-comp-1 medium:gap-comp-2-tablet">
+              <div className="flex flex-col">
+                <label className="text-black text-gh-4 medium:text-gh-4 font-avenir-medium">{product.name}</label>
+                <label className="text-gray text-dh-3 font-avenir-light">{product?.brand}</label>
+              </div>
               {product.details && product.details.length > 0 && (() => {
                 const showPackQty = product.details.some(detail => detail.pack_qty != null && detail.pack_qty !== undefined);
                 const showTotalQty = product.details.some(detail => detail.total_qty != null && detail.total_qty !== undefined);
                 return (
-                  <div className="w-full overflow-x-auto">
-                      <table className="w-full min-w-short text-left border-separate border-spacing-y-std-2 medium:border-spacing-y-std-3">
+                  <div className="w-full overflow-auto">
+                      <table className="w-full text-left whitespace-nowrap border-separate border-spacing-y-std-2">
                         <thead>
                           <tr className="text-th-4 font-avenir-medium">
                             <th className="px-2">Código</th>
