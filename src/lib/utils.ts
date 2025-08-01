@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { clsx, type ClassValue } from "clsx"
-import { toast } from 'react-toastify';
+import { FamuqueToast } from "@/components/FamuqueToast";
 
 export function cn(...inputs: ClassValue[]) {
   return clsx(inputs)
@@ -19,10 +19,10 @@ export function bem(baseName: string, modifiers: Record<string, boolean>): strin
 export function copyToClipBoard(text: string, type: string = 'Text'): void {
   navigator.clipboard.writeText(text)
     .then(() => {
-      toast.success(`${type} copiado en el portapapeles`);
+      FamuqueToast.showToast(`${type} copiado en el portapapeles`, 'success');
     })
     .catch((err) => {
-      toast.error(`Failed to copy ${type.toLowerCase()}`);
+      FamuqueToast.showToast(`Failed to copy ${type.toLowerCase()}`, 'error');
       console.error('Clipboard error:', err);
     });
 }

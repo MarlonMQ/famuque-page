@@ -1,6 +1,7 @@
 import { DefaultLayout } from "@/components/Layout/DefaultLayout"
 import { FamuqueButton } from "@/components/FamuqueButton"
 import { useNavigate } from "react-router-dom"
+import { ROUTES } from "@/router/routes"
 
 function NotFoundPage() {
   const navigate = useNavigate()
@@ -12,7 +13,7 @@ function NotFoundPage() {
         <div className="size-comp-3 animate-spin-slow"/>
         <FamuqueButton 
           variant="hyperlinks"
-          onClick={() => navigate('/')}
+          onClick={() => navigate(ROUTES.HOME)}
         >
           Volver al inicio
         </FamuqueButton>

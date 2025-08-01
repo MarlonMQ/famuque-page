@@ -9,6 +9,7 @@ import { FamuquePagination } from "@/components/FamuquePagination"
 import { Loader2 } from "lucide-react"
 import { useDebounce } from "@/lib/utils"
 import { FamuqueSearcher } from "@/components/FamuqueSearcher"
+import { ROUTES } from "@/router/routes"
 
 const ITEMS_PER_PAGE = 24
 
@@ -90,8 +91,8 @@ function CatalogPage() {
         <FamuqueNavBar showAccountButtons={false}/>
         <FamuqueHeader
           items={[
-            { label: "Inicio", href: "/" },
-            { label: "Catálogo" },
+            { label: "Inicio", href: ROUTES.HOME },
+            { label: "Catálogo", href: ROUTES.CATALOG },
           ]}
         />
 

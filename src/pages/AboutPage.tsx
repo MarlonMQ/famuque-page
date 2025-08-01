@@ -2,6 +2,7 @@ import {FamuqueNavBar} from "@/components/FamuqueNavBar"
 import { DefaultLayout } from "@/components/Layout/DefaultLayout"
 import { FamuqueFooter } from "@/components/FamuqueFooter"
 import { FamuqueHeader } from "@/components/FamuqueHeader"
+import { ROUTES } from "@/router/routes"
 
 function AboutPage() {
 
@@ -13,8 +14,8 @@ function AboutPage() {
       <DefaultLayout>
         <FamuqueNavBar showAccountButtons={false}/>
         <FamuqueHeader items={[
-          { label: "Inicio", href: "/" },
-          { label: "Sobre nosotros" }
+          { label: "Inicio", href: ROUTES.HOME },
+          { label: "Sobre nosotros", href: ROUTES.ABOUT }
         ]}/>
         <section className="bg-white flex relative w-full h-screen items-center justify-center">
 

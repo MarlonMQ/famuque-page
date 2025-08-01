@@ -9,6 +9,7 @@ import { FamuqueTextArea } from "@/components/FamuqueTextArea"
 import LocationIcon from "@/assets/logos/famuque-location.svg?react"
 import PhoneIcon from "@/assets/logos/famuque-phone.svg?react"
 import ClockIcon from "@/assets/logos/famuque-clock.svg?react"
+import { ROUTES } from "@/router/routes"
 
 
 function ContactPage() {
@@ -21,8 +22,8 @@ function ContactPage() {
       <DefaultLayout >
         <FamuqueNavBar showAccountButtons={false}/>
         <FamuqueHeader items={[
-          { label: "Inicio", href: "/" },
-          { label: "Contacto" }
+          { label: "Inicio", href: ROUTES.HOME },
+          { label: "Contacto", href: ROUTES.CONTACT }
         ]}/>
         <section className="bg-white flex flex-col relative h-fit text-center w-full items-center gap-std-3 justify-center p-std-3 tablet:p-comp-2-desktop">
           <label className="font-avenir-heavy text-dh-2 tablet:text-gh-2">¡Ponte en contacto con nosotros!</label>

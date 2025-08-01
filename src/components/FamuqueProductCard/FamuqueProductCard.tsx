@@ -2,6 +2,7 @@ import React from "react";
 import { Share2 } from "lucide-react";
 import { FamuqueButton } from "../FamuqueButton";
 import { useNavigate } from "react-router-dom";
+import { ROUTES } from "@/router/routes";
 
 interface ProductProps {
   slug: string;
@@ -29,7 +30,7 @@ export const FamuqueProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <div 
-      onClick={() => navigate(`/product/${product.slug}`)}
+      onClick={() => navigate(ROUTES.product(product.slug))}
       className="relative group w-full bg-white overflow-hidden cursor-pointer max-w-strap hover:scale-110 stransition-all duration-300"
     >
       <div className="relative h-strap-tablet w-full flex items-center justify-center">

@@ -1,6 +1,7 @@
 import { Navigation } from '@/data/navigationData';
 import { copyToClipBoard } from '@/lib/utils';
 import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '@/router/routes';
 
 export function FamuqueFooter() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ export function FamuqueFooter() {
         <div className="flex sm:flex-row flex-col justify-between items-start gap-5 w-full">
           <button
             className="z-20 text-dh-2 font-avenir-heavy text-black cursor-pointer"
-            onClick={() => navigate('/')}
+            onClick={() => navigate(ROUTES.HOME)}
           >
             famuque
           </button>

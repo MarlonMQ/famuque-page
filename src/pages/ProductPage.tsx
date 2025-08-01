@@ -10,6 +10,7 @@ import { FamuqueCarousel } from "@/components/FamuqueCarousel";
 import { copyToClipBoard } from "@/lib/utils";
 import { ProductProps } from "@/types/Product";
 import NotFoundPage from "./NotFoundPage";
+import { ROUTES } from "@/router/routes";
 
 
 export const ProductPage = () => {
@@ -125,8 +126,8 @@ export const ProductPage = () => {
         <FamuqueNavBar showAccountButtons={false} />
         <FamuqueHeader
           items={[
-            { label: "Inicio", href: "/" },
-            { label: "Catálogo", href: "/catalog" },
+            { label: "Inicio", href: ROUTES.HOME },
+            { label: "Catálogo", href: ROUTES.CATALOG },
             { label: product.name }
           ]}
           variants="product"

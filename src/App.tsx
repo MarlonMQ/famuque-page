@@ -1,36 +1,11 @@
-import HomePage from '@/pages/HomePage';
-import ContactPage from '@/pages/ContactPage';
-import CatalogPage from '@/pages/CatalogPage';
-import AboutPage from '@/pages/AboutPage';
-import NotFoundPage from './pages/NotFoundPage';
-import ProductPage from './pages/ProductPage';
-
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, Bounce } from 'react-toastify';
+import AppRouter from "./router/Router";
+import { FamuqueToast } from "./components/FamuqueToast";
 
 export default function App() {
   return (
-    <Router>  
-      <Routes>
-        <Route path="/" element={<HomePage/>} />
-        <Route path="/contact" element={<ContactPage/>} />
-        <Route path="/catalog" element={<CatalogPage/>} />
-        <Route path="/about" element={<AboutPage/>} />
-        <Route path="/product/:slug" element={<ProductPage />} />
-        <Route path="*" element={<NotFoundPage/>} />
-      </Routes>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        closeOnClick
-        draggable       
-        toastClassName={"toast-custom"}
-        progressClassName={"toast-progress-custom"}
-        transition={Bounce}
-      />
-    </Router>
-  )
+    <>
+      <AppRouter />
+      <FamuqueToast />
+    </>
+  );
 }
