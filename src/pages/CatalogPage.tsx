@@ -90,7 +90,7 @@ function CatalogPage() {
         <FamuqueNavBar showAccountButtons={false}/>
         <FamuqueHeader
           items={[
-            { label: "Inicio", href: "/dev" },
+            { label: "Inicio", href: "/" },
             { label: "Catálogo" },
           ]}
         />

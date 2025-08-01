@@ -12,7 +12,7 @@ function NotFoundPage() {
         <div className="size-comp-3 animate-spin-slow"/>
         <FamuqueButton 
           variant="hyperlinks"
-          onClick={() => navigate('/dev')}
+          onClick={() => navigate('/')}
         >
           Volver al inicio
         </FamuqueButton>

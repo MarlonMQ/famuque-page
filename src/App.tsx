@@ -2,7 +2,6 @@ import HomePage from '@/pages/HomePage';
 import ContactPage from '@/pages/ContactPage';
 import CatalogPage from '@/pages/CatalogPage';
 import AboutPage from '@/pages/AboutPage';
-import ComingSoonPage from '@/pages/ComingSoongPage';
 import NotFoundPage from './pages/NotFoundPage';
 import ProductPage from './pages/ProductPage';
 
@@ -15,8 +14,7 @@ export default function App() {
   return (
     <Router>  
       <Routes>
-        <Route path="/" element={<ComingSoonPage/>} />
-        <Route path="/dev" element={<HomePage/>} />
+        <Route path="/" element={<HomePage/>} />
         <Route path="/contact" element={<ContactPage/>} />
         <Route path="/catalog" element={<CatalogPage/>} />
         <Route path="/about" element={<AboutPage/>} />

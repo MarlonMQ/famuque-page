@@ -27,7 +27,7 @@ export function FamuqueNavBar({showAccountButtons= true,  showLogin = true, show
           variant='secondary'
           className='z-20'
           labelClassName='text-4xl font-avenir-heavy'
-          onClick={() => navigate('/dev')}
+          onClick={() => navigate('/')}
         >
           famuque
         </FamuqueButton>

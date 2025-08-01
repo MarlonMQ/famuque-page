@@ -12,7 +12,7 @@ function HomePage() {
     <>
       <title>Inicio | Famuque</title>
       <meta name="description" content="Explora nuestros productos agrícolas en línea" />
-      <link rel="canonical" href="https://famuque.com/dev" />
+      <link rel="canonical" href="https://famuque.com/" />
       <DefaultLayout>
         <FamuqueNavBar showAccountButtons={false}/>
         <section className="relative flex flex-row items-center tablet:justify-end w-full h-screen ">

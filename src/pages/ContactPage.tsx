@@ -21,7 +21,7 @@ function ContactPage() {
       <DefaultLayout >
         <FamuqueNavBar showAccountButtons={false}/>
         <FamuqueHeader items={[
-          { label: "Inicio", href: "/dev" },
+          { label: "Inicio", href: "/" },
           { label: "Contacto" }
         ]}/>
         <section className="bg-white flex flex-col relative h-fit text-center w-full items-center gap-std-3 justify-center p-std-3 tablet:p-comp-2-desktop">

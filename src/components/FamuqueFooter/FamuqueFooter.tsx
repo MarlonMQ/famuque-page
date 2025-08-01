@@ -16,7 +16,7 @@ export function FamuqueFooter() {
         <div className="flex sm:flex-row flex-col justify-between items-start gap-5 w-full">
           <button
             className="z-20 text-dh-2 font-avenir-heavy text-black cursor-pointer"
-            onClick={() => navigate('/dev')}
+            onClick={() => navigate('/')}
           >
             famuque
           </button>

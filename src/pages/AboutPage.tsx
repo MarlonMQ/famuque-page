@@ -13,7 +13,7 @@ function AboutPage() {
       <DefaultLayout>
         <FamuqueNavBar showAccountButtons={false}/>
         <FamuqueHeader items={[
-          { label: "Inicio", href: "/dev" },
+          { label: "Inicio", href: "/" },
           { label: "Sobre nosotros" }
         ]}/>
         <section className="bg-white flex relative w-full h-screen items-center justify-center">
