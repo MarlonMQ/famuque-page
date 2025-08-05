@@ -34,7 +34,7 @@ export function FamuqueFooter() {
           <div className="w-fit mb-4 text-start">
             <h5 className="text-th-5 mb-2 text-gray">Contacto</h5>
             <ul className="list-none">
-              <li><a className="text-th-5 cursor-pointer hover:underline " onClick={() => copyToClipBoard('k.emuva@hotmail.com', 'Email')}>Email: k.emuva@hotmail.com</a></li>
+              <li><a className="text-th-5 cursor-pointer hover:underline " href='mailto:k.emuva@hotmail.com'>Email: k.emuva@hotmail.com</a></li>
             </ul>
           </div>
         </div>
