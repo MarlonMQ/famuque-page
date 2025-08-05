@@ -1,6 +1,6 @@
+import FamuqueBackground from "@/assets/background/famuque-background--1.jpg"
 import {FamuqueNavBar} from "@/components/FamuqueNavBar"
 import { DefaultLayout } from "@/components/Layout/DefaultLayout"
-import FamuqueBackground from "@/assets/background/famuque-background--1.jpg"
 import { useNavigate } from "react-router-dom"
 import { FamuqueFooter } from "@/components/FamuqueFooter"
 import { FamuqueButton } from "@/components/FamuqueButton"
