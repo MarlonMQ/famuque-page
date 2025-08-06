@@ -2,27 +2,68 @@ import {FamuqueNavBar} from "@/components/FamuqueNavBar"
 import { DefaultLayout } from "@/components/Layout/DefaultLayout"
 import { FamuqueFooter } from "@/components/FamuqueFooter"
 import { FamuqueHeader } from "@/components/FamuqueHeader"
-import { FamuqueInput } from "@/components/FamuqueInput"
-import { FamuqueButton } from "@/components/FamuqueButton"
+import { FamuqueMetadata } from "@/components/FamuqueMetaData"
+import { FamuqueForm} from "@/components/FamuqueForm"
 import { Label } from "@/components/static/Labels"
-import { FamuqueTextArea } from "@/components/FamuqueTextArea"
+import { ROUTES } from "@/router/routes"
 import LocationIcon from "@/assets/logos/famuque-location.svg?react"
 import PhoneIcon from "@/assets/logos/famuque-phone.svg?react"
 import ClockIcon from "@/assets/logos/famuque-clock.svg?react"
+import emailjs from '@emailjs/browser';
+import { FamuqueToast } from "@/components/FamuqueToast"
+import { useFormik } from "formik"
+
+import * as Yup from "yup"
 
 
 function ContactPage() {
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      phone: "",
+      message: ""
+    },
+    validationSchema: Yup.object().shape({
+      name: Yup.string().required("Este campo es requerido"),
+      email: Yup.string().email("Correo inválido").required("Este campo es requerido"),
+      phone: Yup.string()
+        .matches(/^[0-9]+$/, "Número inválido")
+        .required("Campo requerido"),
+    }),
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        await emailjs.send(
+          import.meta.env.VITE_EMAILJS_SERVICE_ID, 
+          import.meta.env.VITE_EMAILJS_TEMPLATE_ID, 
+          {
+            name: values.name,
+            email: values.email,
+            phone: values.phone,
+            message: values.message
+          }, 
+          import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        );
+        FamuqueToast.showToast("Mensaje enviado exitosamente", "Su mensaje ha sido enviado, nos pondremos en contacto con usted pronto.", "success");
+        resetForm();
+      } catch (error) {
+        FamuqueToast.showToast("Error al enviar el mensaje", "No se pudo enviar el mensaje. Por favor, inténtelo de nuevo más tarde.", "error");
+      }
+    },
+  });
 
   return (
     <>
-      <title>Contacto | Famuque</title>
-      <meta name="description" content="Contáctanos para más información sobre nuestros productos y servicios agrícolas. Estamos para ayudarte." />
-      <link rel="canonical" href="https://famuque.com/contact" />
+      <FamuqueMetadata
+        title="Contacto | Famuque"
+        description="Contáctanos para más información sobre nuestros productos y servicios agrícolas. Estamos para ayudarte."
+        canonicalLink="https://famuque.com/contact"
+      />
       <DefaultLayout >
         <FamuqueNavBar showAccountButtons={false}/>
         <FamuqueHeader items={[
-          { label: "Inicio", href: "/dev" },
-          { label: "Contacto" }
+          { label: "Inicio", href: ROUTES.STATIC.HOME },
+          { label: "Contacto", href: ROUTES.STATIC.CONTACT }
         ]}/>
         <section className="bg-white flex flex-col relative h-fit text-center w-full items-center gap-std-3 justify-center p-std-3 tablet:p-comp-2-desktop">
           <label className="font-avenir-heavy text-dh-2 tablet:text-gh-2">¡Ponte en contacto con nosotros!</label>
@@ -70,29 +111,47 @@ function ContactPage() {
               </div>
             </div>
           </div>
-          <fieldset className="w-full max-w-screen-wide grid grid-cols-1  gap-y-std-2 gap-x-comp-3 order-1 laptop:order-2">
+          <FamuqueForm
+            formik={formik}
+            className="w-full max-w-screen-wide grid grid-cols-1  gap-y-std-2 gap-x-comp-3 order-1 laptop:order-2"
+          >
             <div className="grid gap-std-1">
               <Label required text="Tu Nombre" />
-              <FamuqueInput name={"originalImplantingDate"} />
+              <FamuqueForm.Input 
+                name={"name"}
+                type="text" 
+                placeholder="Ingresa tu nombre completo"
+              />
             </div>
             <div className="grid gap-std-1">
-              <Label required text="Correo Electrónico" />
-              <FamuqueInput name={"explantDate"} />
+              <Label required text="Correo electrónico" />
+              <FamuqueForm.Input 
+                name={"email"} 
+                type="email"
+                placeholder="Ingresa tu correo electrónico"
+              />
             </div>
             <div className="grid gap-std-1">
-              <Label required text="Número de teléfono" />
-              <FamuqueInput name={"explantDate"} />
+              <Label required text="Número telefónico" />
+              <FamuqueForm.Input 
+                name={"phone"}
+                type="tel"
+                placeholder="Ingresa tu número telefónico"
+              />
             </div>
             <div className="grid gap-std-1">
-              <Label text="¿Como podémos ayudarte?"/>
-              <FamuqueTextArea name={"explantDate"} />
+              <Label text="¿Como podémos ayudarte?" />
+              <FamuqueForm.TextArea 
+                name="message" 
+                placeholder="Cotizaciones, contactos, sugerencias, etc."
+              />
             </div>
             <div className="justify-self-start">
-              <FamuqueButton type="submit" variant="primary" >
+              <FamuqueForm.Submit>
                 Enviar
-              </FamuqueButton>
+              </FamuqueForm.Submit>
             </div>
-          </fieldset>
+          </FamuqueForm>
         </section>
         <FamuqueFooter/>
       </DefaultLayout>

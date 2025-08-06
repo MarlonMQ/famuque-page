@@ -1,14 +1,16 @@
+import { ROUTES } from '@/router/routes';
+
 export const Navigation = [
   {
     title: 'Catálogo',
-    link: '/catalog'
+    link: ROUTES.STATIC.CATALOG
   },
   {
     title: 'Contacto',
-    link: '/contact'
+    link: ROUTES.STATIC.CONTACT
   },
   {
     title: 'Sobre nosotros',
-    link: '/about'
+    link: ROUTES.STATIC.ABOUT
   }
 ];

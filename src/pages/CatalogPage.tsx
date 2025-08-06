@@ -9,6 +9,8 @@ import { FamuquePagination } from "@/components/FamuquePagination"
 import { Loader2 } from "lucide-react"
 import { useDebounce } from "@/lib/utils"
 import { FamuqueSearcher } from "@/components/FamuqueSearcher"
+import { ROUTES } from "@/router/routes"
+import { FamuqueMetadata } from "@/components/FamuqueMetaData"
 
 const ITEMS_PER_PAGE = 24
 
@@ -80,18 +82,17 @@ function CatalogPage() {
 
   return (
     <>
-      <title>Catálogo | Famuque</title>
-      <meta
-        name="description"
-        content="Explora nuestro catálogo de productos agrícolas en línea. Encuentra lo que necesitas para tu cultivo."
+      <FamuqueMetadata
+        title="Catálogo | Famuque"
+        description="Explora nuestro catálogo de productos agrícolas en línea. Encuentra lo que necesitas para tu cultivo."
+        canonicalLink="https://famuque.com/catalog"
       />
-      <link rel="canonical" href="https://famuque.com/catalog" />
       <DefaultLayout>
         <FamuqueNavBar showAccountButtons={false}/>
         <FamuqueHeader
           items={[
-            { label: "Inicio", href: "/dev" },
-            { label: "Catálogo" },
+            { label: "Inicio", href: ROUTES.STATIC.HOME },
+            { label: "Catálogo", href: ROUTES.STATIC.CATALOG },
           ]}
         />
 

@@ -1,6 +1,6 @@
 import { Navigation } from '@/data/navigationData';
-import { copyToClipBoard } from '@/lib/utils';
 import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '@/router/routes';
 
 export function FamuqueFooter() {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ export function FamuqueFooter() {
         <div className="flex sm:flex-row flex-col justify-between items-start gap-5 w-full">
           <button
             className="z-20 text-dh-2 font-avenir-heavy text-black cursor-pointer"
-            onClick={() => navigate('/dev')}
+            onClick={() => navigate(ROUTES.STATIC.HOME)}
           >
             famuque
           </button>
@@ -33,7 +33,7 @@ export function FamuqueFooter() {
           <div className="w-fit mb-4 text-start">
             <h5 className="text-th-5 mb-2 text-gray">Contacto</h5>
             <ul className="list-none">
-              <li><a className="text-th-5 cursor-pointer hover:underline " onClick={() => copyToClipBoard('k.emuva@hotmail.com', 'Email')}>Email: k.emuva@hotmail.com</a></li>
+              <li><a className="text-th-5 cursor-pointer hover:underline " href='mailto:k.emuva@hotmail.com'>Email: k.emuva@hotmail.com</a></li>
             </ul>
           </div>
         </div>

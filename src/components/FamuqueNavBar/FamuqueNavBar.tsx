@@ -7,6 +7,7 @@ import FamuqueUser from "@/assets/logos/famuque-user.svg?react";
 import FamuqueSearch from "@/assets/logos/famuque-search.svg?react";
 import FamuqueCart from "@/assets/logos/famuque-cart.svg?react";
 import { FamuqueButton } from '@/components/FamuqueButton';
+import { ROUTES } from '@/router/routes';
 
 interface FamuqueNavBarProps {
   showAccountButtons?: boolean;
@@ -27,7 +28,7 @@ export function FamuqueNavBar({showAccountButtons= true,  showLogin = true, show
           variant='secondary'
           className='z-20'
           labelClassName='text-4xl font-avenir-heavy'
-          onClick={() => navigate('/dev')}
+          onClick={() => navigate(ROUTES.STATIC.HOME)}
         >
           famuque
         </FamuqueButton>
@@ -80,7 +81,7 @@ export function FamuqueNavBar({showAccountButtons= true,  showLogin = true, show
             {showLogin && (
               <FamuqueButton
               variant="secondary"
-                onClick={() => navigate('/login')}
+                onClick={() => navigate(ROUTES.STATIC.LOGIN)}
                 >
                 <FamuqueUser className="w-6 h-6" />
               </FamuqueButton>
@@ -88,7 +89,7 @@ export function FamuqueNavBar({showAccountButtons= true,  showLogin = true, show
             {showSearch && (
               <FamuqueButton
               variant="secondary"
-              onClick={() => navigate('/search')}
+              onClick={() => navigate(ROUTES.STATIC.SEARCH)}
               >
                 <FamuqueSearch className="w-6 h-6" />
               </FamuqueButton>
@@ -96,7 +97,7 @@ export function FamuqueNavBar({showAccountButtons= true,  showLogin = true, show
             {showCart && (
               <FamuqueButton
               variant="secondary"
-              onClick={() => navigate('/cart')}
+              onClick={() => navigate(ROUTES.STATIC.CART)}
               >
                 <FamuqueCart className="w-6 h-6" />
               </FamuqueButton>

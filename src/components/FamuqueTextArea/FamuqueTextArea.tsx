@@ -36,7 +36,7 @@ export function FamuqueTextArea({
         )}
       >
         {/* <textarea className="no-scroll" disabled={disabled} placeholder={placeholder} {...props} /> */}
-        <textarea className="no-scroll w-full px-std-1 py-3 bg-transparent disabled:cursor-not-allowed outline-none resize-none h-28" disabled={disabled} placeholder={placeholder} {...props}/>
+        <textarea className="no-scroll w-full px-std-1 py-3 bg-transparent font-avenir-roman text-th-3 disabled:cursor-not-allowed outline-none resize-none h-28" disabled={disabled} placeholder={placeholder} {...props}/>
       </div>
       {error && errorMessage && <span className="text-error pl-std-3">{errorMessage}</span>}
     </div>

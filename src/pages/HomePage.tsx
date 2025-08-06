@@ -1,18 +1,21 @@
+import FamuqueBackground from "@/assets/background/famuque-background--1.jpg"
 import {FamuqueNavBar} from "@/components/FamuqueNavBar"
 import { DefaultLayout } from "@/components/Layout/DefaultLayout"
-import FamuqueBackground from "@/assets/background/famuque-background--1.jpg"
 import { useNavigate } from "react-router-dom"
 import { FamuqueFooter } from "@/components/FamuqueFooter"
 import { FamuqueButton } from "@/components/FamuqueButton"
+import { FamuqueMetadata } from "@/components/FamuqueMetaData"
 
 function HomePage() {
   const navigate = useNavigate()
 
   return (
     <>
-      <title>Inicio | Famuque</title>
-      <meta name="description" content="Explora nuestros productos agrícolas en línea" />
-      <link rel="canonical" href="https://famuque.com/dev" />
+      <FamuqueMetadata
+        title="Inicio | Famuque"
+        description="Explora nuestros productos agrícolas en línea"
+        canonicalLink="https://famuque.com/"
+      />
       <DefaultLayout>
         <FamuqueNavBar showAccountButtons={false}/>
         <section className="relative flex flex-row items-center tablet:justify-end w-full h-screen ">

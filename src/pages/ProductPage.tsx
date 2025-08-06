@@ -7,9 +7,10 @@ import { FamuqueFooter } from "@/components/FamuqueFooter";
 import { FamuqueHeader } from "@/components/FamuqueHeader";
 import { FamuqueMetadata } from "@/components/FamuqueMetaData";
 import { FamuqueCarousel } from "@/components/FamuqueCarousel";
-import { copyToClipBoard } from "@/lib/utils";
+import { FamuqueToast } from "@/components/FamuqueToast";
 import { ProductProps } from "@/types/Product";
 import NotFoundPage from "./NotFoundPage";
+import { ROUTES } from "@/router/routes";
 
 
 export const ProductPage = () => {
@@ -18,6 +19,18 @@ export const ProductPage = () => {
   const [carouselImages, setCarouselImages] = useState<string[]>([]);
   const [relatedProducts, setRelatedProducts] = useState<ProductProps[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const CopyToClipBoard = (text: string, code: string): void => {
+    navigator.clipboard.writeText(text)
+      .then(() => {
+      FamuqueToast.showToast(`Código en portapapeles`, `El código ${code} se ha copiado al portapapeles.`, 'info');
+      })
+      .catch((err) => {
+        FamuqueToast.showToast(`Error al copiar`, 'Error al copiar el código en el portapapeles', 'error');
+        console.error('Clipboard error:', err);
+      });
+
+  }
 
   useEffect(() => {
     if (!slug) return;
@@ -125,8 +138,8 @@ export const ProductPage = () => {
         <FamuqueNavBar showAccountButtons={false} />
         <FamuqueHeader
           items={[
-            { label: "Inicio", href: "/" },
-            { label: "Catálogo", href: "/catalog" },
+            { label: "Inicio", href: ROUTES.STATIC.HOME },
+            { label: "Catálogo", href: ROUTES.STATIC.CATALOG },
             { label: product.name }
           ]}
           variants="product"
@@ -161,7 +174,7 @@ export const ProductPage = () => {
                             <tr key={index}>
                               <td 
                                 className="px-2 py-1 font-avenir-heavy text-th-4 hover:underline cursor-pointer"
-                                onClick={() => copyToClipBoard(detail.code, `Código de ${detail.size_description}`)}
+                                onClick={() => CopyToClipBoard(detail.code, detail.code)}
                               >
                                 {detail.code}
                               </td>
