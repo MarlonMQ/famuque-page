@@ -138,8 +138,8 @@ export const ProductPage = () => {
         <FamuqueNavBar showAccountButtons={false} />
         <FamuqueHeader
           items={[
-            { label: "Inicio", href: ROUTES.HOME },
-            { label: "Catálogo", href: ROUTES.CATALOG },
+            { label: "Inicio", href: ROUTES.STATIC.HOME },
+            { label: "Catálogo", href: ROUTES.STATIC.CATALOG },
             { label: product.name }
           ]}
           variants="product"

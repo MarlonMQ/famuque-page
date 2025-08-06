@@ -1,15 +1,21 @@
 export const ROUTES = {
-  HOME: "/",
+  STATIC:{
+  HOME: "/dev",
+  COMING_SOON: "/",
+  
+  
   CONTACT: "/contact",
   CATALOG: "/catalog",
   ABOUT: "/about",
   PRODUCT: "/product/:slug",
   NOT_FOUND: "*",
 
-  LOGIN : "/login",
-  SEARCH : "/search",
-  CART : "/cart",
+  LOGIN: "/login",
+  SEARCH: "/search",
+  CART: "/cart",
+  },
 
-  // funciones para rutas dinámicas
-  product: (slug: string) => `/product/${slug}`,
+  DYNAMIC: {
+    product: (slug: string) => `/product/${slug}`,
+  },
 };

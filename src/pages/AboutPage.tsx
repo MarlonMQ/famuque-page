@@ -17,8 +17,8 @@ function AboutPage() {
       <DefaultLayout>
         <FamuqueNavBar showAccountButtons={false}/>
         <FamuqueHeader items={[
-          { label: "Inicio", href: ROUTES.HOME },
-          { label: "Sobre nosotros", href: ROUTES.ABOUT }
+          { label: "Inicio", href: ROUTES.STATIC.HOME },
+          { label: "Sobre nosotros", href: ROUTES.STATIC.ABOUT }
         ]}/>
         <section className="bg-white flex relative w-full h-screen items-center justify-center">
 

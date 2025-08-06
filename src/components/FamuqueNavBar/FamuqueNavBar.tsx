@@ -28,7 +28,7 @@ export function FamuqueNavBar({showAccountButtons= true,  showLogin = true, show
           variant='secondary'
           className='z-20'
           labelClassName='text-4xl font-avenir-heavy'
-          onClick={() => navigate(ROUTES.HOME)}
+          onClick={() => navigate(ROUTES.STATIC.HOME)}
         >
           famuque
         </FamuqueButton>
@@ -81,7 +81,7 @@ export function FamuqueNavBar({showAccountButtons= true,  showLogin = true, show
             {showLogin && (
               <FamuqueButton
               variant="secondary"
-                onClick={() => navigate(ROUTES.LOGIN)}
+                onClick={() => navigate(ROUTES.STATIC.LOGIN)}
                 >
                 <FamuqueUser className="w-6 h-6" />
               </FamuqueButton>
@@ -89,7 +89,7 @@ export function FamuqueNavBar({showAccountButtons= true,  showLogin = true, show
             {showSearch && (
               <FamuqueButton
               variant="secondary"
-              onClick={() => navigate(ROUTES.SEARCH)}
+              onClick={() => navigate(ROUTES.STATIC.SEARCH)}
               >
                 <FamuqueSearch className="w-6 h-6" />
               </FamuqueButton>
@@ -97,7 +97,7 @@ export function FamuqueNavBar({showAccountButtons= true,  showLogin = true, show
             {showCart && (
               <FamuqueButton
               variant="secondary"
-              onClick={() => navigate(ROUTES.CART)}
+              onClick={() => navigate(ROUTES.STATIC.CART)}
               >
                 <FamuqueCart className="w-6 h-6" />
               </FamuqueButton>

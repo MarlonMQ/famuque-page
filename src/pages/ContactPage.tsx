@@ -62,8 +62,8 @@ function ContactPage() {
       <DefaultLayout >
         <FamuqueNavBar showAccountButtons={false}/>
         <FamuqueHeader items={[
-          { label: "Inicio", href: ROUTES.HOME },
-          { label: "Contacto", href: ROUTES.CONTACT }
+          { label: "Inicio", href: ROUTES.STATIC.HOME },
+          { label: "Contacto", href: ROUTES.STATIC.CONTACT }
         ]}/>
         <section className="bg-white flex flex-col relative h-fit text-center w-full items-center gap-std-3 justify-center p-std-3 tablet:p-comp-2-desktop">
           <label className="font-avenir-heavy text-dh-2 tablet:text-gh-2">¡Ponte en contacto con nosotros!</label>
