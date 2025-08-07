@@ -6,7 +6,6 @@ import { FamuqueMetadata } from "@/components/FamuqueMetaData"
 import { FamuqueForm} from "@/components/FamuqueForm"
 import { Label } from "@/components/static/Labels"
 import { ROUTES } from "@/router/routes"
-import LocationIcon from "@/assets/logos/famuque-location.svg?react"
 import PhoneIcon from "@/assets/logos/famuque-phone.svg?react"
 import ClockIcon from "@/assets/logos/famuque-clock.svg?react"
 import emailjs from '@emailjs/browser';
