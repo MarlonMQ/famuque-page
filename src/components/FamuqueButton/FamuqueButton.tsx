@@ -58,7 +58,7 @@ export function FamuqueButton({
       (loading || disabled) && `opacity-50`,
     ],
     hyperlinks: [
-      "underline text-black hover:brightness-50 transition-all duration-300 ease-in-out",
+      "underline text-black transition-all duration-300 ease-in-out",
       "hover:text-famuque",
       loading && "text-black opacity-50 no-underline",
       disabled && "text-black opacity-50 no-underline",
