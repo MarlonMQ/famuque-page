@@ -21,7 +21,12 @@ export function FamuqueFooter() {
             <ul className="list-none">
               {Navigation.map((navigation, index) => (
                 <li key={index}>
-                  <a className="text-th-5 hover:underline cursor-pointer" href={navigation.link}>{navigation.title}</a>
+                  <a 
+                    className="text-th-5 hover:underline cursor-pointer" 
+                    href={navigation.link}
+                  >
+                    {navigation.title}
+                  </a>
                 </li>
               ))}
             </ul>
