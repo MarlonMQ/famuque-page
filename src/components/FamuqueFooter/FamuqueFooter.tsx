@@ -5,10 +5,6 @@ import { ROUTES } from '@/router/routes';
 export function FamuqueFooter() {
   const navigate = useNavigate();
 
-  const handleClick = (link: string): void => {
-    navigate(link);
-  };
-  
   return (
     <>  
       <hr className="border-t border-gray-light w-full z-10" />
@@ -25,7 +21,12 @@ export function FamuqueFooter() {
             <ul className="list-none">
               {Navigation.map((navigation, index) => (
                 <li key={index}>
-                  <a className="text-th-5 hover:underline cursor-pointer" onClick={() => handleClick(navigation.link)}>{navigation.title}</a>
+                  <a 
+                    className="text-th-5 hover:underline cursor-pointer" 
+                    href={navigation.link}
+                  >
+                    {navigation.title}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -33,7 +34,23 @@ export function FamuqueFooter() {
           <div className="w-fit mb-4 text-start">
             <h5 className="text-th-5 mb-2 text-gray">Contacto</h5>
             <ul className="list-none">
-              <li><a className="text-th-5 cursor-pointer hover:underline " href='mailto:k.emuva@hotmail.com'>Email: k.emuva@hotmail.com</a></li>
+              <li>
+                <a 
+                  className="text-th-5 cursor-pointer hover:underline " 
+                  href='mailto:k.emuva@hotmail.com'
+                >
+                  Email: k.emuva@hotmail.com
+                </a>
+              </li>
+              <li>
+                <a
+                  className="text-th-5 cursor-pointer hover:underline "
+                  href='https://wa.me/50688855222?text=Hola,%0A%0AMe%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20productos.'
+                  target='_blank'
+                >
+                  Whatsapp: +506 8885 5222
+                </a>
+              </li>
             </ul>
           </div>
         </div>

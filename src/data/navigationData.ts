@@ -9,8 +9,8 @@ export const Navigation = [
     title: 'Contacto',
     link: ROUTES.STATIC.CONTACT
   },
-  {
-    title: 'Sobre nosotros',
-    link: ROUTES.STATIC.ABOUT
-  }
+  // {
+  //   title: 'Sobre nosotros',
+  //   link: ROUTES.STATIC.ABOUT
+  // }
 ];

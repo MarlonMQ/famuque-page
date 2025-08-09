@@ -6,6 +6,7 @@ type Variant =
   | "primary"
   | "secondary"
   | "tertiary"
+  | "quaternary"
   | "hyperlinks"
   | "little"
   | "outline";
@@ -57,8 +58,13 @@ export function FamuqueButton({
       "hover:bg-famuque hover:text-white",
       (loading || disabled) && `opacity-50`,
     ],
+    quaternary: [
+      "font-avenir-roman text-famuque text-dh-4",
+      " hover:text-gray",
+      (loading || disabled) && `opacity-50`,
+    ],
     hyperlinks: [
-      "underline text-black hover:brightness-50 transition-all duration-300 ease-in-out",
+      "underline text-black transition-all duration-300 ease-in-out",
       "hover:text-famuque",
       loading && "text-black opacity-50 no-underline",
       disabled && "text-black opacity-50 no-underline",

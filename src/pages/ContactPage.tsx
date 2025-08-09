@@ -6,12 +6,14 @@ import { FamuqueMetadata } from "@/components/FamuqueMetaData"
 import { FamuqueForm} from "@/components/FamuqueForm"
 import { Label } from "@/components/static/Labels"
 import { ROUTES } from "@/router/routes"
-import LocationIcon from "@/assets/logos/famuque-location.svg?react"
 import PhoneIcon from "@/assets/logos/famuque-phone.svg?react"
 import ClockIcon from "@/assets/logos/famuque-clock.svg?react"
 import emailjs from '@emailjs/browser';
 import { FamuqueToast } from "@/components/FamuqueToast"
 import { useFormik } from "formik"
+import WhatsappIcon from "@/assets/logos/famuque-whatsapp.svg?react"
+import EmailIcon from "@/assets/logos/famuque-email.svg?react"
+import { FamuqueButton } from "@/components/FamuqueButton"
 
 import * as Yup from "yup"
 
@@ -72,29 +74,48 @@ function ContactPage() {
         <section className="bg-white flex flex-col laptop:flex-row relative w-full max-w-screen-desktop gap-comp-2-tablet justify-center p-comp-1 laptop:p-comp-2-desktop ">
           <div className="w-full flex flex-col gap-comp-2 order-2 laptop:order-1">
             <div className="flex flex-row gap-comp-2">
-              <LocationIcon className="size-comp-1-tablet tablet:size-comp-2"/>
+              <EmailIcon className="size-comp-1-tablet tablet:size-comp-2"/>
               <div className="grid gap-std-2">
                 <label className="text-dh-3 tablet:text-dh-2 font-avenir-medium">
-                  Dirección
+                  Correo Electrónico
                 </label>
-                <label className="text-dh-4 tablet:text-dh-3 font-avenir-light">
-                  San Rafael de Poás, 
-                  <br/> 
-                  Alajuela Costa Rica
-                </label>
+                <FamuqueButton
+                  className="w-fit"
+                  labelClassName="text-dh-4 tablet:text-dh-3 font-avenir-light"
+                  onClick={() => window.open("mailto:k.emuva@hotmail.com", "_blank")}
+                  variant="quaternary"
+                >
+                  k.emuva@hotmail.com
+                </FamuqueButton>   
               </div>
             </div>
             <div className="flex flex-row gap-comp-2">
               <PhoneIcon className="size-comp-1-tablet tablet:size-comp-2"/>
               <div className="grid gap-std-2">
                 <label className="text-dh-3 tablet:text-dh-2 font-avenir-medium">
-                  Teléfono
+                  Teléfonos
                 </label>
-                <label className="text-dh-4 tablet:text-dh-3 font-avenir-light">
-                  +(506) 83495522
-                  <br/>
-                  +(506) 24484597
-                </label>
+                  <FamuqueButton
+                    className="w-fit"
+                    labelClassName="text-dh-4 tablet:text-dh-3 font-avenir-light"
+                    onClick={() => window.open(
+                      "https://wa.me/50688855222?text=Hola,%0A%0AMe%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20productos.", 
+                      "_blank"
+                    )}
+                    variant="quaternary"
+                    prepend_icon={<WhatsappIcon className="size-comp-1"/>}
+                  >
+                    +506 8885 5222
+                  </FamuqueButton>
+                  <FamuqueButton
+                    className="w-fit"
+                    labelClassName="text-dh-4 tablet:text-dh-3 font-avenir-light"
+                    onClick={() => window.open("tel:+50624484597", "_blank")}
+                    variant="quaternary"
+                    prepend_icon={<PhoneIcon className="size-comp-1"/>}
+                  >
+                    +506 2448 4597
+                  </FamuqueButton>
               </div>
             </div>
             <div className="flex flex-row gap-comp-2">

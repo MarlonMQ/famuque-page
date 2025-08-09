@@ -1,0 +1,1 @@
+export { FamuqueMarquee } from './FamuqueMarquee';
