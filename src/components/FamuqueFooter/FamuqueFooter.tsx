@@ -34,6 +34,7 @@ export function FamuqueFooter() {
             <h5 className="text-th-5 mb-2 text-gray">Contacto</h5>
             <ul className="list-none">
               <li><a className="text-th-5 cursor-pointer hover:underline " href='mailto:k.emuva@hotmail.com'>Email: k.emuva@hotmail.com</a></li>
+              <li><a className="text-th-5 cursor-pointer hover:underline " href='https://wa.me/50688855222'>Whatsapp: +506 8885 5222</a></li>
             </ul>
           </div>
         </div>
