@@ -1,7 +1,7 @@
 import React from "react";
 import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import FamuqueBackground from "@/assets/background/famuque-background--1.jpg";
+import FamuqueBackground from "@/assets/background/famuque-background--1.webp";
 
 interface BreadcrumbItem {
   label: string;
