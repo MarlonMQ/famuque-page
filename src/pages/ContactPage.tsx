@@ -83,7 +83,7 @@ function ContactPage() {
                   className="w-fit"
                   labelClassName="text-dh-4 tablet:text-dh-3 font-avenir-light"
                   onClick={() => window.open("mailto:k.emuva@hotmail.com", "_blank")}
-                  variant="secondary"
+                  variant="quaternary"
                 >
                   k.emuva@hotmail.com
                 </FamuqueButton>   
@@ -99,7 +99,7 @@ function ContactPage() {
                     className="w-fit"
                     labelClassName="text-dh-4 tablet:text-dh-3 font-avenir-light"
                     onClick={() => window.open("https://wa.me/50688855222", "_blank")}
-                    variant="hyperlinks"
+                    variant="quaternary"
                     prepend_icon={<WhatsappIcon className="size-comp-1"/>}
                   >
                     +506 8885 5222
@@ -108,7 +108,7 @@ function ContactPage() {
                     className="w-fit"
                     labelClassName="text-dh-4 tablet:text-dh-3 font-avenir-light"
                     onClick={() => window.open("tel:+50624484597", "_blank")}
-                    variant="hyperlinks"
+                    variant="quaternary"
                     prepend_icon={<PhoneIcon className="size-comp-1"/>}
                   >
                     +506 2448 4597
