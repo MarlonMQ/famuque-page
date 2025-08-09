@@ -98,7 +98,10 @@ function ContactPage() {
                   <FamuqueButton
                     className="w-fit"
                     labelClassName="text-dh-4 tablet:text-dh-3 font-avenir-light"
-                    onClick={() => window.open("https://wa.me/50688855222", "_blank")}
+                    onClick={() => window.open(
+                      "https://wa.me/50688855222?text=Hola,%0A%0AMe%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20productos.", 
+                      "_blank"
+                    )}
                     variant="quaternary"
                     prepend_icon={<WhatsappIcon className="size-comp-1"/>}
                   >
