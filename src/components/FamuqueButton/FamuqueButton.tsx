@@ -6,6 +6,7 @@ type Variant =
   | "primary"
   | "secondary"
   | "tertiary"
+  | "quaternary"
   | "hyperlinks"
   | "little"
   | "outline";
@@ -55,6 +56,11 @@ export function FamuqueButton({
     tertiary: [
       "bg-white text-famuque py-5 px-7 font-avenir-medium text-2xl outline-famuque outline-2",
       "hover:bg-famuque hover:text-white",
+      (loading || disabled) && `opacity-50`,
+    ],
+    quaternary: [
+      "font-avenir-roman text-famuque text-dh-4",
+      " hover:text-gray",
       (loading || disabled) && `opacity-50`,
     ],
     hyperlinks: [
