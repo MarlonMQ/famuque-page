@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  MODE = "production"
+
+[context.branch-deploy]
+  command = "npm run build:dev"
+  environment = { MODE = "development" }
+
+[context.production.environment]
+  MODE = "production"
