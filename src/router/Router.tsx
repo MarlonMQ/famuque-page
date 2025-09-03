@@ -11,15 +11,20 @@ import ComingSoonPage from "@/pages/ComingSoonPage";
 const AppRouter = () => (
   <Router>
     <Routes>
-      <Route path={ROUTES.STATIC.COMING_SOON} element={<ComingSoonPage />} />
-      <Route path={ROUTES.STATIC.HOME} element={<HomePage />} />
-      <Route path={ROUTES.STATIC.CONTACT} element={<ContactPage />} />
-      <Route path={ROUTES.STATIC.CATALOG} element={<CatalogPage />} />
-      {/* <Route path={ROUTES.STATIC.ABOUT} element={<AboutPage />} /> */}
-      <Route path={ROUTES.STATIC.PRODUCT} element={<ProductPage />} />
-      <Route path={ROUTES.STATIC.NOT_FOUND} element={<NotFoundPage />} />
+      {import.meta.env.MODE === "development" ? (
+        <>
+          <Route path={ROUTES.STATIC.HOME} element={<HomePage />} />
+          <Route path={ROUTES.STATIC.CONTACT} element={<ContactPage />} />
+          <Route path={ROUTES.STATIC.CATALOG} element={<CatalogPage />} />
+          <Route path={ROUTES.STATIC.PRODUCT} element={<ProductPage />} />
+          <Route path={ROUTES.STATIC.NOT_FOUND} element={<NotFoundPage />} />
+        </>
+      ) : (
+        <Route path="*" element={<ComingSoonPage />} />
+      )}
     </Routes>
   </Router>
 );
+
 
 export default AppRouter;
