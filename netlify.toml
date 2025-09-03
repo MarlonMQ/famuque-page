@@ -5,8 +5,9 @@
 [build.environment]
   MODE = "production"
 
-[context.branch-deploy.environment]
-  MODE = "development"
+[context.branch-deploy]
+  command = "npm run build:dev"
+  environment = { MODE = "development" }
 
-[context.production.environment]  
+[context.production.environment]
   MODE = "production"
