@@ -18,11 +18,12 @@ const AppRouter = () => (
           <Route path={ROUTES.STATIC.CATALOG} element={<CatalogPage />} />
           <Route path={ROUTES.STATIC.PRODUCT} element={<ProductPage />} />
           <Route path={ROUTES.STATIC.NOT_FOUND} element={<NotFoundPage />} />
+          <Route path={ROUTES.STATIC.FALLBACK} element={<Navigate to={ROUTES.STATIC.NOT_FOUND} />} />
         </>
       ) : (
         <>
-          <Route path="/" element={<ComingSoonPage />} />
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path={ROUTES.STATIC.HOME} element={<ComingSoonPage />} />
+          <Route path={ROUTES.STATIC.FALLBACK} element={<Navigate to={ROUTES.STATIC.HOME} />} />
         </>
       )}
     </Routes>
