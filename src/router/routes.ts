@@ -6,7 +6,8 @@ export const ROUTES = {
     CATALOG: "/catalog",
     ABOUT: "/about",
     PRODUCT: "/product/:slug",
-    NOT_FOUND: "*",
+    NOT_FOUND: "/404",
+    FALLBACK: "*",
 
     LOGIN: "/login",
     SEARCH: "/search",
