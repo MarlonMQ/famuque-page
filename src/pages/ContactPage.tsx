@@ -24,16 +24,20 @@ function ContactPage() {
       name: "",
       email: "",
       phone: "",
-      message: ""
+      message: "",
+      captcha: ""
     },
     validationSchema: Yup.object().shape({
       name: Yup.string().required("Este campo es requerido"),
       email: Yup.string().email("Correo inválido").required("Este campo es requerido"),
-      phone: Yup.string()
-        .matches(/^[0-9]+$/, "Número inválido")
-        .required("Campo requerido"),
+      phone: Yup.string().matches(/^[\d+\s]+$/, "Número inválido"),  
+      captcha: Yup.string().required("Por favor, verifica que no eres un robot")
     }),
     onSubmit: async (values, { resetForm }) => {
+      if (!values.captcha) {
+        FamuqueToast.showToast("Error de validación", "Por favor, verifica que no eres un robot.", "error");
+        return;
+      }
       try {
         await emailjs.send(
           import.meta.env.VITE_EMAILJS_SERVICE_ID, 
@@ -153,7 +157,7 @@ function ContactPage() {
               />
             </div>
             <div className="grid gap-std-1">
-              <Label required text="Número telefónico" />
+              <Label text="Número telefónico" />
               <FamuqueForm.Input 
                 name={"phone"}
                 type="tel"
@@ -166,6 +170,12 @@ function ContactPage() {
                 name="message" 
                 placeholder="Cotizaciones, contactos, sugerencias, etc."
               />
+            </div>
+            <div>
+              <FamuqueForm.Captcha
+                name="captcha"
+                siteKey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+                />
             </div>
             <div className="justify-self-start">
               <FamuqueForm.Submit>

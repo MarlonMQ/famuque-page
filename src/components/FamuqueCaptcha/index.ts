@@ -1,0 +1,1 @@
+export { FamuqueCaptcha } from './FamuqueCaptcha';

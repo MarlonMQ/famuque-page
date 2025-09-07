@@ -3,6 +3,7 @@ import { FamuqueTextArea } from "@/components/FamuqueTextArea";
 import { FamuqueButton } from "../FamuqueButton";
 import { FormikValues, FormikProps , FormikProvider, Form, useFormikContext } from "formik";
 import { ReactElement } from "react";
+import { FamuqueCaptcha } from "@/components/FamuqueCaptcha";
 import React from "react";
 
 interface FormLayoutProps<T extends Record<string, any>> {
@@ -95,4 +96,5 @@ export const FamuqueForm = Object.assign(FormLayout, {
   Input: InputField,
   TextArea: TextAreaField,
   Submit: SubmitButton,
+  Captcha: FamuqueCaptcha,
 });
