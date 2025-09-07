@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { ROUTES } from "@/router/routes";
 import HomePage from "@/pages/HomePage";
 import ContactPage from "@/pages/ContactPage";
@@ -20,7 +20,10 @@ const AppRouter = () => (
           <Route path={ROUTES.STATIC.NOT_FOUND} element={<NotFoundPage />} />
         </>
       ) : (
-        <Route path="*" element={<ComingSoonPage />} />
+        <>
+          <Route path="/" element={<ComingSoonPage />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </>
       )}
     </Routes>
   </Router>
