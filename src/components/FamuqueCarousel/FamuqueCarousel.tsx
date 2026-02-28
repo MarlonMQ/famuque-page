@@ -37,7 +37,7 @@ export const FamuqueCarousel: React.FC<FamuqueCarouselProps> = ({
   variant = "Images",
   products = []
 }) => {
-  const [mainImage, setMainImage] = useState<string>(images[0]);
+  const [mainImage, setMainImage] = useState<string|undefined>(images[0]);
   const options = {
     align: "start" as const,
     loop: loop,
@@ -49,7 +49,7 @@ export const FamuqueCarousel: React.FC<FamuqueCarouselProps> = ({
   const plugins = autoSlide ? [Autoplay({ delay: 4000 })] : [];
 
   if (variant === "Images" && (!images || images.length === 0)) {
-    return <div>No hay imágenes disponibles.</div>;
+    return <div className="w-full max-w-minimal-2 aspect-square">No hay imágenes disponibles.</div>;
   }
 
 
