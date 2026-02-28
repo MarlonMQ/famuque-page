@@ -64,30 +64,35 @@ export const ProductPage = () => {
           details: details || []
         });
 
-        await fetchImages(product.slug);
+        await fetchImages(product.id);
         await fetchRelatedProducts(product.id);
       }
 
     }
     
-    async function fetchImages(slug: string) {
-      try {
-        const res = await fetch(`https://fnsebmblhaelxdgsksym.supabase.co/functions/v1/rapid-function?slug=${slug}`);
-        if (!res.ok) throw new Error(`Error HTTP: ${res.status}`);
-        const data = await res.json();
+        async function fetchImages(productId: number) {
+          try {
+              const { data: imagesData, error } = await supabase
+                .from("product_images")  
+                .select("s3_key") 
+                .eq("product_id", productId)
+                .order("position", { ascending: true });
 
-        if (!data.urls || data.urls.length === 0) return;
+              if (error) throw error;
+              if (!imagesData || imagesData.length === 0) return;
 
-        const mainImg = data.urls.find((url: string) => url.toLowerCase().includes("main.png")) || data.urls[0];
-        const ordered = [mainImg, ...data.urls.filter((url: string) => url !== mainImg)];
+              const urls = imagesData.map(img => 
+                `https://famuque.s3.us-east-1.amazonaws.com/${img.s3_key}`
+              );
 
-        setCarouselImages(ordered);
-      } catch (err) {
-        console.error("Error fetching images:", err);
-      } finally {
-        setLoading(false);
+              const mainImg = urls.find(u => u.toLowerCase().includes("main.png")) || urls[0];
+              setCarouselImages([mainImg, ...urls.filter(u => u !== mainImg)]);
+          } catch (err) {
+              console.error("Error fetching images:", err);
+          } finally {
+              setLoading(false);
+          }
       }
-    }
 
     async function fetchRelatedProducts(productId: number) {
       const { data: relatedIdsData, error: relatedIdsError } = await supabase

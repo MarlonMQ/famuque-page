@@ -3,16 +3,9 @@ import { Share2 } from "lucide-react";
 import { FamuqueButton } from "../FamuqueButton";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "@/router/routes";
-
-interface ProductProps {
-  slug: string;
-  name: string;
-  description: string;
-  price: string;
-  oldPrice?: string;
-  discount?: string;
-  link: string;
-}
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
+import { ProductProps } from "@/types/Product";
 
 interface ProductCardProps {
   product: ProductProps;
@@ -26,7 +19,30 @@ export const FamuqueProductCard: React.FC<ProductCardProps> = ({
   showShare = true,
 }) => {
   const navigate = useNavigate();
+  const [mainImage, setMainImage] = useState<string | undefined>(undefined);
 
+  useEffect(() => {
+    async function fetchMainImage() {
+      try {
+        const { data: imagesData, error } = await supabase
+          .from("product_images")
+          .select("s3_key, position")
+          .eq("product_id", Number(product.id))
+          .eq("position", 0)
+          .limit(1)
+          .single();
+
+        if (error) throw error;
+        if (!imagesData) return;
+
+        const url = `https://famuque.s3.us-east-1.amazonaws.com/${imagesData.s3_key}`;
+        setMainImage(url);
+      } catch (err) {
+        console.error("Error fetching main image:", err);
+      }
+    }
+    fetchMainImage();
+  }, [product.id]);
 
   return (
     <div 
@@ -35,7 +51,7 @@ export const FamuqueProductCard: React.FC<ProductCardProps> = ({
     >
       <div className="relative h-strap-tablet w-full flex items-center justify-center">
         <img
-          src={product.link + "images/main.png"}
+          src={mainImage}
           alt={product.name}
           className="h-full object-cover transition-transform duration-300"
         />
@@ -53,7 +69,6 @@ export const FamuqueProductCard: React.FC<ProductCardProps> = ({
             variant="little"
             onClick={e => {
               e.stopPropagation();
-              // Add to cart logic here
             }}>
            Add to cart
           </FamuqueButton>
@@ -66,7 +81,6 @@ export const FamuqueProductCard: React.FC<ProductCardProps> = ({
             labelClassName="text-th-5"
             onClick={(e) => {
               e.stopPropagation();
-              // Share logic here
             }}
           >
             Share

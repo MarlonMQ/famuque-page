@@ -49,5 +49,4 @@ export function DefaultLayoutContent({
   );
 }
 
-// Attach Content as a property of DefaultLayout
 (DefaultLayout as any).Content = DefaultLayoutContent;
